@@ -8,8 +8,11 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="grid grid-cols-9">
-      <Sidebar />
-      <div className="col-span-8 overflow-y-auto pt-5 ">
+      <div className="col-span-2">
+        <Sidebar />
+      </div>
+
+      <div className="col-span-7 overflow-y-auto pt-5 ">
         <main>{children}</main>
       </div>
     </div>
