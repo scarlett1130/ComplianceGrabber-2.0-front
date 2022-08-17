@@ -72,10 +72,10 @@ const Sidebar: NextPage = () => {
             <span className="hidden group-hover:block w-9 h-12">
               <img src="/extensionblack.svg" className="w-full h-full" />
             </span>
-
-            <span className="font-semibold  text-md pl-1 w-full group-hover:text-gray-800">
+            <span className="font-semibold  group-hover:text-gray-800">
               Find The Supplier
             </span>
+
             <span className="invisible group-hover:visible">
               <img src="/arrow.svg" />
             </span>
