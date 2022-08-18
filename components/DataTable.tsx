@@ -25,7 +25,6 @@ export default function DataTable({
   };
 
   const PreviousPage = () => {
-    console.log(Start, End);
     if (!(Start - step < 0)) {
       setStart(Start - step);
       setEnd(End - step);
@@ -65,7 +64,6 @@ export default function DataTable({
         >
           <thead className="">
             <tr className="text-[16px] font-bold bg-gradient-to-t from-[#0ec4c1] to-[#3f7599]  text-gray-100 ">
-              <th className="p-5">Index</th>
               {head?.map((column) => (
                 <th key={"tbh_vw" + column} className="p-5 ">
                   {column?.toString()}{" "}
@@ -81,9 +79,6 @@ export default function DataTable({
                   index % 2 !== 0 ? "bg-[#bce7e7]" : "bg-gray-100"
                 }`}
               >
-                <td style={{ textAlign: "center" }} className="py-3">
-                  {index + Start + 1}
-                </td>
                 {row?.map((cell: number, cell_index: number) => (
                   <td
                     key={cell_index + "td" + index}

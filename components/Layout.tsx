@@ -7,7 +7,7 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="lg:flex  relative ">
+    <div className="lg:flex lg:space-x-2  relative ">
       <Sidebar />
 
       <div className="overflow-y-auto pt-5  flex-1">

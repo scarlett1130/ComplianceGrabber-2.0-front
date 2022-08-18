@@ -106,7 +106,7 @@ const Manufacturers: NextPage = () => {
         />
         <link rel="icon" href="/logo.jpeg" />
       </Head>
-      <div className="px-2 space-y-2">
+      <div className="px-2 md:px-12 space-y-2">
         <div className="space-y-2 lg:flex lg:space-x-4 items-center relative  w-full ">
           <select
             className="w-full border-[3px] lg:max-w-[250px]  border-[#079290] px-2 bg-[#079290] shadow-lg font-mono text-lg  cursor-pointer rounded-lg hover:rounded-md text-white   py-3 outline-none"
@@ -122,7 +122,7 @@ const Manufacturers: NextPage = () => {
               </option>
             ))}
           </select>
-          <div className="flex border-[3px] w-full  items-center border-[#079290] shadow-md rounded-lg  overflow-hidden flex-1 ">
+          <div className="flex border-[3px] w-full  items-center border-[#079290] shadow-md rounded-lg  overflow-hidden flex-1 px-2">
             <img src="/search.svg" className="w-6 h-6" />
             <input
               className="p-2 outline-none w-full text-lg"
@@ -133,7 +133,7 @@ const Manufacturers: NextPage = () => {
 
           <button
             className="px-9 py-3 rounded-xl w-full lg:max-w-[150px] bg-[#079290] hover:rounded-lg shadow-md text-white text-lg  font-semibold"
-            // onClick={GetLiveData}
+            onClick={GetLiveData}
           >
             Search
           </button>
@@ -151,7 +151,7 @@ const Manufacturers: NextPage = () => {
           )}
 
           {Loading && (
-            <div className="mt-64 w-full grid grid-cols-1 place-items-center">
+            <div className="mt-96 w-full grid grid-cols-1 place-items-center">
               <img src="/ring.gif" />
             </div>
           )}
