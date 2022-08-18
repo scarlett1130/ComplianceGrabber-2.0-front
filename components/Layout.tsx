@@ -7,10 +7,10 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="grid grid-cols-8">
+    <div className="lg:flex  relative ">
       <Sidebar />
 
-      <div className="col-span-7 overflow-y-auto pt-5 ">
+      <div className="overflow-y-auto pt-5  flex-1">
         <main>{children}</main>
       </div>
     </div>
