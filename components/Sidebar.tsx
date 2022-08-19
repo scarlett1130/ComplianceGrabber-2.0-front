@@ -58,8 +58,8 @@ const Sidebar: NextPage = () => {
             imgWhite="manifacturewhite.svg"
           />
           <Sidelink
-            title="Distributors"
-            link="/Distributors"
+            title="Distributers"
+            link="/Distributers"
             img="distribute.svg"
             imgWhite="distributewhite.svg"
           />
