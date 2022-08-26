@@ -58,8 +58,8 @@ const Banner = () => {
               />
             </defs>
           </svg>
-          <div className="bg-[#071a3a] smooth-transiton w-[250px] h-[100px] group-hover:translate-x-[175px]  absolute -left-[260px]" />
-          <div className="bg-[#071a3a] w-[250px] smooth-transiton h-[100px] group-hover:-translate-x-[175px] absolute  -right-[250px]" />
+          <div className="bg-[#071a3a] smooth-transition w-[250px] h-[100px] group-hover:translate-x-[175px]  absolute -left-[260px]" />
+          <div className="bg-[#071a3a] w-[250px] smooth-transition h-[100px] group-hover:-translate-x-[175px] absolute  -right-[250px]" />
         </button>
       </div>
     </div>

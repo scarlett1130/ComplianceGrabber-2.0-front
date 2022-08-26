@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 @layer utilities {
-  .smooth-transiton {
+  .smooth-transition {
     transition-duration: 500ms;
       transition-timing-function: ease-out;
 
