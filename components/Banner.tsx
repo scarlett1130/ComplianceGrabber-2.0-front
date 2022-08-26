@@ -29,15 +29,20 @@ const Banner = () => {
         <button className="font-poppins relative overflow-hidden text-3xl group text-white rounded-full flex items-center justify-center space-x-4 border-4 border-white  min-w-[350px] px-4">
           <p className="z-10">Features</p>
           <svg
-            className="z-10 group-hover:scale-105 smooth-transition"
-            width="80"
-            height="60"
-            viewBox="0 0 95 52"
+            width="96"
+            height="96"
+            viewBox="0 0 96 96"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
           >
-            <rect y="0.295227" width="95" height="51" fill="url(#pattern0)" />
+            <g clipPath="url(#clip0_55_4)">
+              <path
+                d="M44 36.64V8C24 10 8 27.16 8 48C8 68.84 24 86 44 88V59.36C40 57.72 36 53.28 36 48C36 42.72 40 38.28 44 36.64ZM59.44 44H88C86.08 25 72 9.88 52 8V36.64C56 37.84 58.08 40.56 59.44 44ZM52 59.36V88C72 86.12 86.08 71 88 52H59.44C58.08 55.44 56 58.16 52 59.36Z"
+                fill="white"
+              />
+              <rect width="96" height="96" fill="url(#pattern0)" />
+            </g>
             <defs>
               <pattern
                 id="pattern0"
@@ -45,19 +50,20 @@ const Banner = () => {
                 width="1"
                 height="1"
               >
-                <use
-                  xlinkHref="#image0_4_28"
-                  transform="translate(0.231579) scale(0.00559211 0.0104167)"
-                />
+                <use xlinkHref="#image0_55_4" transform="scale(0.0104167)" />
               </pattern>
+              <clipPath id="clip0_55_4">
+                <rect width="96" height="96" fill="white" />
+              </clipPath>
               <image
-                id="image0_4_28"
+                id="image0_55_4"
                 width="96"
                 height="96"
-                xlinkHref="data:image/png;base64,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"
+                xlinkHref="data:image/png;base64,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"
               />
             </defs>
           </svg>
+
           <div className="bg-[#071a3a] smooth-transition w-[250px] h-[100px] group-hover:translate-x-[175px]  absolute -left-[260px]" />
           <div className="bg-[#071a3a] w-[250px] smooth-transition h-[100px] group-hover:-translate-x-[175px] absolute  -right-[250px]" />
         </button>
