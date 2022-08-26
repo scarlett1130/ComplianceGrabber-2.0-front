@@ -1,7 +1,7 @@
 import {
   generateDigiKeyTable,
   generateMouserTableData,
-  generateTableFastData,
+  generateTableData,
 } from "./TableGenerator";
 import Papa from "papaparse";
 import axios from "axios";
@@ -33,7 +33,7 @@ export default async function getLiveManufacturerData({
       );
       const csv_data = Papa.unparse(rawData);
 
-      const LiveData = generateTableFastData(rawData);
+      const LiveData = generateTableData(rawData);
 
       return { csv_data, LiveData };
     } catch (error) {
@@ -54,7 +54,7 @@ export default async function getLiveManufacturerData({
       );
       const csv_data = Papa.unparse(rawData);
 
-      const LiveData = generateTableFastData(rawData);
+      const LiveData = generateTableData(rawData);
 
       return { csv_data, LiveData };
     } catch (error) {
@@ -75,7 +75,7 @@ export default async function getLiveManufacturerData({
       );
       const csv_data = Papa.unparse(rawData);
 
-      const LiveData = generateTableFastData(rawData);
+      const LiveData = generateTableData(rawData);
 
       return { csv_data, LiveData };
     } catch (error) {
@@ -128,7 +128,7 @@ export async function getLiveDistributersData({
       })
     );
     const csv_data = Papa.unparse(rawData);
-    const LiveData = generateTableFastData(rawData);
+    const LiveData = generateTableData(rawData);
     return { csv_data, LiveData };
   } else if (supplier == "Maxim") {
     let rawData: any[] = [];
@@ -143,7 +143,7 @@ export async function getLiveDistributersData({
       })
     );
     const csv_data = Papa.unparse(rawData);
-    const LiveData = generateTableFastData(rawData);
+    const LiveData = generateTableData(rawData);
     return { csv_data, LiveData };
   } else if (supplier == "Rs-components") {
     let rawData: any[] = [];
@@ -158,7 +158,7 @@ export async function getLiveDistributersData({
       })
     );
     const csv_data = Papa.unparse(rawData);
-    const LiveData = generateTableFastData(rawData);
+    const LiveData = generateTableData(rawData);
     return { csv_data, LiveData };
   } else if (supplier == "Future Electronics") {
     let rawData: any[] = [];
@@ -172,7 +172,7 @@ export async function getLiveDistributersData({
       })
     );
     const csv_data = Papa.unparse(rawData);
-    const LiveData = generateTableFastData(rawData);
+    const LiveData = generateTableData(rawData);
     return { csv_data, LiveData };
   }
 }

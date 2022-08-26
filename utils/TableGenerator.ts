@@ -28,22 +28,6 @@ export function generateTableData(data: any) {
   return tabledata;
 }
 
-export function generateTableFastData(data: { [x: string]: any }) {
-  let tabledata: Table = { head: [], body: [] };
-
-  let head = Object.keys(data);
-
-  tabledata.head = head;
-  tabledata.body = [];
-  let temp = [];
-  for (let h of head) {
-    temp.push(data[h]);
-  }
-
-  tabledata.body.push(temp);
-  return tabledata;
-}
-
 export function generateDigiKeyTable(data: { [x: string]: any }) {
   let tabledata: Table = { head: [], body: [] };
 
