@@ -31,7 +31,7 @@ function TutorialSection() {
         <div className="rounded-xl overflow-hidden min-h-[500px]">
           <iframe
             className="w-full h-full"
-            src="https://www.youtube.com/embed/8eu7z_yCbvE"
+            src="https://www.youtube.com/embed/MAtaT8BZEAo"
             title="Parent Teacher Interviews"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

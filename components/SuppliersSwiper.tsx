@@ -7,7 +7,7 @@ function SuppliersSwiper() {
   const Suppliers_LOGOS = ["/about.svg", "/blogDark.svg", "/extension.svg"];
   return (
     <div className="w-full relative  flex flex-col justify-center py-8">
-      <div className="flex justify-center pb-14">
+      <div className="flex justify-center pb-6">
         <p className="font-poppins text-4xl text-black">Our Suppliers</p>
       </div>
       <div className="container mx-auto">
@@ -35,7 +35,7 @@ function SuppliersSwiper() {
             .fill(null)
             .map((logo) => (
               <SwiperSlide key={logo}>
-                <Image src="/faqDark.svg" width={80} height={80} alt="ddf" />
+                <Image src="/faqDark.svg" width={60} height={60} alt="ddf" />
               </SwiperSlide>
             ))}
         </Swiper>
