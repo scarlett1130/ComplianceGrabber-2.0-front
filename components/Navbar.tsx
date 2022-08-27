@@ -2,14 +2,30 @@ import {
   ArchiveBoxXMarkIcon,
   Bars3CenterLeftIcon,
 } from "@heroicons/react/20/solid";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ButtonLink from "./ButtonLink";
 import Sidebar from "./Sidebar";
 
 const Navbar = () => {
   const [show, setshow] = useState(false);
+  const [Transparent, setTransparent] = useState(true);
+  const handleScroll = () => {
+    if (window.scrollY > 250) setTransparent(false);
+    else setTransparent(true);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <div className="sticky px-4 lg:px-0 flex justify-between lg:justify-center z-10 inset-x-0 top-0 pt-5 items-center lg:py-5  overflow-hidden lg:rounded-b-full mx-2 shadow-md shadow-black">
+    <div
+      className={`fixed ${
+        Transparent ? "bg-transparent" : "bg-[#254153f5]"
+      } px-4 lg:px-0 flex justify-between smooth-transition lg:justify-center z-10 inset-x-0 top-0 pt-5 items-center lg:py-5   overflow-hidden lg:rounded-b-full mx-2 shadow-md shadow-black`}
+    >
       <Sidebar show={show} setshow={setshow} />
       <div className="relative lg:absolute left-14 text-white ">
         <svg

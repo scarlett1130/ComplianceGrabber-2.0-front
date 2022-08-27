@@ -1,7 +1,9 @@
 import type { NextPage } from "next";
 import Banner from "../components/Banner";
+import FeatureSection from "../components/FeatureSection";
 import Navbar from "../components/Navbar";
 import SuppliersSwiper from "../components/SuppliersSwiper";
+import TutorialSection from "../components/TutorialSection";
 
 const Home: NextPage = () => {
   return (
@@ -11,6 +13,8 @@ const Home: NextPage = () => {
         <Banner />
       </div>
       <SuppliersSwiper />
+      <FeatureSection />
+      <TutorialSection />
     </>
   );
 };
