@@ -7,6 +7,7 @@ const Home: NextPage = () => {
     <div className="relative min-h-screen">
       <Navbar />
       <Banner />
+      <div className="min-h-screen">dd</div>
     </div>
   );
 };

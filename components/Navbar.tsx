@@ -1,3 +1,7 @@
+import {
+  ArchiveBoxXMarkIcon,
+  Bars3CenterLeftIcon,
+} from "@heroicons/react/20/solid";
 import React, { useState } from "react";
 import ButtonLink from "./ButtonLink";
 import Sidebar from "./Sidebar";
@@ -21,35 +25,15 @@ const Navbar = () => {
           />
         </svg>
       </div>
-      <div className="bg-black opacity-30 absolute  inset-0 bg-blend-darken" />
-      <button onClick={() => setshow(!show)}>
-        <svg
-          className="relative lg:hidden "
-          width="60"
-          height="60"
-          viewBox="0 0 40 40"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-        >
-          <rect width="60" height="60" fill="url(#pattern0)" />
-          <defs>
-            <pattern
-              id="pattern0"
-              patternContentUnits="objectBoundingBox"
-              width="1"
-              height="1"
-            >
-              <use xlinkHref="#image0_55_3" transform="scale(0.0104167)" />
-            </pattern>
-            <image
-              id="image0_55_3"
-              width="60"
-              height="60"
-              xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAAAhElEQVR4nO3aMQ6AMAwEwZj//9l8AEHlHIpm6hRWtr21AAAAAAAAADhVfT3o7t5xyKmq6vWPr12H8EyAMAHCBAgTIEyAMAEAAAAAAACG2QUNswv6OQHCBAgTIEyAMAHCBAAAAAAAABhmFzTMLujnBAgTIEyAMAHCBAgTAAAAAAAAAACG3E2GDC7VbgLhAAAAAElFTkSuQmCC"
-            />
-          </defs>
-        </svg>
+      <div className="bg-black opacity-30 absolute  inset-0 bg-blend-darken " />
+      <button
+        onClick={() => setshow(!show)}
+        className=" lg:hidden z-30 hover:scale-x-110 smooth-transition"
+      >
+        <Bars3CenterLeftIcon
+          color="white"
+          className="h-16 w-14 cursor-pointer"
+        />
       </button>
 
       <div className="hidden  relative lg:flex justify-evenly items-center  text-xl text-white space-x-14 max-w-7xl ">

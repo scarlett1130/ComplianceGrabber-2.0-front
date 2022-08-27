@@ -8,7 +8,7 @@ interface SidebarProps {
 const Sidebar = ({ show, setshow }: SidebarProps) => {
   return (
     <div
-      className={`fixed  lg:hidden  z-40 px-16 flex flex-col inset-y-0 ${
+      className={`fixed z-40  lg:hidden  px-16 flex flex-col inset-y-0 ${
         show ? " right-0 " : " -right-[264px]"
       } smooth-transition justify-center bg-[#0B1120] shadow-lg rounded-l-2xl shadow-white space-y-16`}
     >
