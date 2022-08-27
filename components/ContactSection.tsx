@@ -5,11 +5,11 @@ function ContactSection() {
     <div className="">
       <div className="  ">
         <div className="relative bg-gradient-to-r from-[#203058]  to-[#28546df5] shadow-xl">
-          <div className="flex justify-start text-white text-xl md:text-4xl py-9 px-4">
+          <div className="flex justify-center text-white text-xl md:text-4xl py-9 px-4">
             <h1>Need help ? Contact us</h1>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 mt-9">
+          <div className="grid grid-cols-1 lg:grid-cols-3 mt-9 px-6">
             {/* Contact information */}
             <div className="relative overflow-hidden  px-6  sm:px-10 xl:p-12">
               <div
