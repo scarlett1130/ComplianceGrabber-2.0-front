@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Banner from "../components/Banner";
+import ContactSection from "../components/ContactSection";
 import FeatureSection from "../components/FeatureSection";
 import Navbar from "../components/Navbar";
 import SuppliersSwiper from "../components/SuppliersSwiper";
@@ -15,6 +16,7 @@ const Home: NextPage = () => {
       <SuppliersSwiper />
       <FeatureSection />
       <TutorialSection />
+      <ContactSection />
     </>
   );
 };
