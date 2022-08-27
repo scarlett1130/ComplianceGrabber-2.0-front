@@ -1,10 +1,13 @@
-import React from "react";
-import type { NextPage } from "next";
+import React, { useState } from "react";
+import ButtonLink from "./ButtonLink";
+import Sidebar from "./Sidebar";
 
 const Navbar = () => {
+  const [show, setshow] = useState(false);
   return (
-    <div className="absolute px-4 lg:px-0 flex justify-between lg:justify-center z-10 inset-x-0 top-0 pt-5 items-center lg:py-5  overflow-hidden lg:rounded-b-full mx-2 shadow-md shadow-black">
-      <div className="lg:absolute left-14 text-white ">
+    <div className="sticky px-4 lg:px-0 flex justify-between lg:justify-center z-10 inset-x-0 top-0 pt-5 items-center lg:py-5  overflow-hidden lg:rounded-b-full mx-2 shadow-md shadow-black">
+      <Sidebar show={show} setshow={setshow} />
+      <div className="relative lg:absolute left-14 text-white ">
         <svg
           width="60"
           height="60"
@@ -19,51 +22,41 @@ const Navbar = () => {
         </svg>
       </div>
       <div className="bg-black opacity-30 absolute  inset-0 bg-blend-darken" />
-      <svg
-        className=" lg:hidden "
-        width="60"
-        height="60"
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-      >
-        <rect width="60" height="60" fill="url(#pattern0)" />
-        <defs>
-          <pattern
-            id="pattern0"
-            patternContentUnits="objectBoundingBox"
-            width="1"
-            height="1"
-          >
-            <use xlinkHref="#image0_55_3" transform="scale(0.0104167)" />
-          </pattern>
-          <image
-            id="image0_55_3"
-            width="60"
-            height="60"
-            xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAAAhElEQVR4nO3aMQ6AMAwEwZj//9l8AEHlHIpm6hRWtr21AAAAAAAAADhVfT3o7t5xyKmq6vWPr12H8EyAMAHCBAgTIEyAMAEAAAAAAACG2QUNswv6OQHCBAgTIEyAMAHCBAAAAAAAABhmFzTMLujnBAgTIEyAMAHCBAgTAAAAAAAAAACG3E2GDC7VbgLhAAAAAElFTkSuQmCC"
-          />
-        </defs>
-      </svg>
+      <button onClick={() => setshow(!show)}>
+        <svg
+          className="relative lg:hidden "
+          width="60"
+          height="60"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
+          <rect width="60" height="60" fill="url(#pattern0)" />
+          <defs>
+            <pattern
+              id="pattern0"
+              patternContentUnits="objectBoundingBox"
+              width="1"
+              height="1"
+            >
+              <use xlinkHref="#image0_55_3" transform="scale(0.0104167)" />
+            </pattern>
+            <image
+              id="image0_55_3"
+              width="60"
+              height="60"
+              xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAAAhElEQVR4nO3aMQ6AMAwEwZj//9l8AEHlHIpm6hRWtr21AAAAAAAAADhVfT3o7t5xyKmq6vWPr12H8EyAMAHCBAgTIEyAMAEAAAAAAACG2QUNswv6OQHCBAgTIEyAMAHCBAAAAAAAABhmFzTMLujnBAgTIEyAMAHCBAgTAAAAAAAAAACG3E2GDC7VbgLhAAAAAElFTkSuQmCC"
+            />
+          </defs>
+        </svg>
+      </button>
 
       <div className="hidden  relative lg:flex justify-evenly items-center  text-xl text-white space-x-14 max-w-7xl ">
-        <button className="relative group">
-          <p className="text-md">Manufactureres</p>
-          <hr className=" absolute w-0 group-hover:w-full smooth-transition" />
-        </button>
-        <button className="relative group">
-          <p className="text-md"> Distributers</p>
-          <hr className=" absolute w-0 group-hover:w-full smooth-transition" />
-        </button>
-        <button className="relative group">
-          <p className="text-md">Generate</p>
-          <hr className=" absolute w-0 group-hover:w-full smooth-transition" />
-        </button>
-        <button className="relative group">
-          <p className="text-md">Need help ?</p>
-          <hr className=" absolute w-0 group-hover:w-full smooth-transition" />
-        </button>
+        <ButtonLink title="Manufacturers" link="" />
+        <ButtonLink title="Distributers" link="" />
+        <ButtonLink title="Generate" link="" />
+        <ButtonLink title="Need help ?" link="" />
       </div>
     </div>
   );
