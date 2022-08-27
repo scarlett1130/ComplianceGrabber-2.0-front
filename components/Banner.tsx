@@ -29,8 +29,8 @@ const Banner = () => {
         <button className="font-poppins relative overflow-hidden text-3xl group text-white rounded-full flex items-center justify-center space-x-4  py-2 border-4 border-white  min-w-[350px] px-4">
           <p className="lg:z-10 ">Features</p>
           <ArrowRightCircleIcon color="white" className="w-24 h-14 lg:z-10" />
-          <div className="bg-[#071a3a] smooth-transition w-[250px] h-[100px] group-hover:translate-x-[175px]  absolute -left-[260px]" />
-          <div className="bg-[#071a3a] w-[250px] smooth-transition h-[100px] group-hover:-translate-x-[175px] absolute  -right-[250px]" />
+          <div className="bg-[#0B1120]  hidden lg:block smooth-transition w-[250px] h-[100px] group-hover:translate-x-[175px]  absolute -left-[260px]" />
+          <div className="bg-[#0B1120]  hidden lg:block w-[250px] smooth-transition h-[100px] group-hover:-translate-x-[175px] absolute  -right-[250px]" />
         </button>
       </div>
     </div>
