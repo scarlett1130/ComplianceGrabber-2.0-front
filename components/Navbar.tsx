@@ -13,6 +13,7 @@ const Navbar = () => {
     if (window.scrollY > 250) setTransparent(false);
     else setTransparent(true);
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
 
@@ -53,8 +54,8 @@ const Navbar = () => {
       </button>
 
       <div className="hidden  relative lg:flex justify-evenly items-center  text-xl text-white space-x-14 max-w-7xl ">
-        <ButtonLink title="Manufacturers" link="" />
-        <ButtonLink title="Distributers" link="" />
+        <ButtonLink title="Home" link="/" />
+        <ButtonLink title="Supplier" link="/suppliers" />
         <ButtonLink title="Generate" link="" />
         <ButtonLink title="Need help ?" link="" />
       </div>
