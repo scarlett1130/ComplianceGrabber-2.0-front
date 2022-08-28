@@ -5,7 +5,7 @@ import Dropdown from "../components/Combobox";
 import Navbar from "../components/Navbar";
 import SecondaryBanner from "../components/SecondaryBanner";
 
-const suppliers: NextPage = () => {
+const Suppliers: NextPage = () => {
   const [selectedTypesupplier, setSelectedTypesupplier] = useState<string>("");
   const [selectedsupplier, setSelectedsupplier] = useState<string>("");
   return (
@@ -49,4 +49,4 @@ const suppliers: NextPage = () => {
   );
 };
 
-export default suppliers;
+export default Suppliers;
