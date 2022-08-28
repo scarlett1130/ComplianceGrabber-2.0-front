@@ -14,10 +14,7 @@ const Banner = () => {
         loop
         className="absolute inset-0 h-full w-full object-fill"
       />
-      <div
-        className="absolute inset-0 bg-gray-900 opacity-60 mix-blend-multiply"
-        aria-hidden="true"
-      />
+
       <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center ">
         <h1 className="text-4xl font-poppins tracking-tight mt-32 sm:mt-2  text-white sm:text-5xl lg:text-6xl">
           ComplianceGrabber 2.0
