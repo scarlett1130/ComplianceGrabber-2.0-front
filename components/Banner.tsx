@@ -7,11 +7,12 @@ const Banner = () => {
   };
   return (
     <div className="absolute inset-0 max-h-screen ">
-      <Image
-        src="https://images.unsplash.com/photo-1613690399151-65ea69478674?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1173&q=80"
-        layout="fill"
-        className="object-cover"
-        alt="banner image"
+      <video
+        src="https://cdn.dribbble.com/users/1542362/screenshots/16499285/media/452718516761091228a754666099e367.mp4"
+        autoPlay
+        muted
+        loop
+        className="absolute inset-0 h-full w-full object-fill"
       />
       <div
         className="absolute inset-0 bg-gray-900 opacity-60 mix-blend-multiply"
