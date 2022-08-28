@@ -1,10 +1,11 @@
+import { NextPage } from "next";
 import React, { useState } from "react";
 import Dropdown from "../components/Combobox";
 
 import Navbar from "../components/Navbar";
 import SecondaryBanner from "../components/SecondaryBanner";
 
-function suppliers() {
+const suppliers: NextPage = () => {
   const [selectedTypesupplier, setSelectedTypesupplier] = useState<string>("");
   const [selectedsupplier, setSelectedsupplier] = useState<string>("");
   return (
@@ -46,6 +47,6 @@ function suppliers() {
       </div>
     </>
   );
-}
+};
 
 export default suppliers;
