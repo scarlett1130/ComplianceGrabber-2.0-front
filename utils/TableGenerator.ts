@@ -3,14 +3,11 @@ const config = {
     "Content-type": "application/json",
   },
 };
-interface Table {
-  head: any[];
-  body: any[];
-}
-export function generateTableData(data: any) {
-  let tabledata: Table = { head: [], body: [] };
+let head: any[] = [];
+let body: any[] = [];
+let tabledata = { head, body };
 
-  let head: string | any[] = [];
+export function generateTableData(data: any) {
   for (let d of data) {
     if (Object.keys(d).length > head.length) head = Object.keys(d);
   }
@@ -29,8 +26,6 @@ export function generateTableData(data: any) {
 }
 
 export function generateDigiKeyTable(data: { [x: string]: any }) {
-  let tabledata: Table = { head: [], body: [] };
-
   tabledata.head = [
     "DigiKeyPartNumber",
     "Manufacturer",
@@ -64,18 +59,14 @@ export function generateDigiKeyTable(data: { [x: string]: any }) {
       console.log(temp);
     }
   }
-  console.log(tabledata);
+
   tabledata.body.push(temp);
   return tabledata;
 }
 
 export function generateFutureElectronicTableData(data: any) {
-  let tabledata: Table = { head: [], body: [] };
-
-  let head = ["Subcategory", "Partnumber", "Manufacturer Name"];
-
   try {
-    tabledata.head = head;
+    tabledata.head = ["Subcategory", "Partnumber", "Manufacturer Name"];
     tabledata.body = [];
 
     for (let d of data) {
@@ -102,17 +93,11 @@ export function generateFutureElectronicTableData(data: any) {
 }
 
 export function generateMouserTableData(data: any) {
-  let tabledata: Table = { head: [], body: [] };
-
-  let head: string | any[] = [];
   for (let d of data) {
-    if (Object.keys(d).length > head.length) head = Object.keys(d);
+    if (Object.keys(d).length > head.length) tabledata.head = Object.keys(d);
   }
-
-  tabledata.head = head;
   tabledata.body = [];
   for (let d of data) {
-    // console.log(d)
     const d_arr = [];
     for (let h of head) {
       if (h == "ProductCompliance") {
@@ -125,10 +110,8 @@ export function generateMouserTableData(data: any) {
         let prices = [];
         if (d[h].length > 1) {
           for (let Pricebreak of d[h]) {
-            console.log(Pricebreak.Price);
             prices.push(Number(Pricebreak.Price.replace("$", "")));
           }
-
           d[h] = `from ${Math.min(...prices)}$ to ${Math.max(...prices)}$`;
         } else if (d[h].length == 1) {
           d[h] = d[h][0].Price;

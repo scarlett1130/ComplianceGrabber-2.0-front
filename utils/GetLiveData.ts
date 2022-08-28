@@ -14,7 +14,7 @@ interface liveDataProps {
   supplier: string;
   partnumbers: string[];
 }
-export default async function getLiveManufacturerData({
+export async function getLiveManufacturerData({
   supplier,
   partnumbers,
 }: liveDataProps) {
@@ -93,14 +93,14 @@ export async function getLiveDistributersData({
       partnumbers.map(async (partnumber) => {
         const response = await fetchMouser(partnumber);
 
-        if (response && response?.data.status != "not found") {
+        if (response && response?.data?.status != "not found") {
           rawData = [...rawData, ...response];
         }
       })
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateMouserTableData(rawData);
-    console.log("ddddd", LiveData);
+
     return { csv_data, LiveData };
   } else if (supplier == "Digikey") {
     let rawData: any[] = [];

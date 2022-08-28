@@ -34,8 +34,8 @@ const distributers: string[] = [
   "Rshughes",
 ];
 
-const suppliers: Supliers = {
+const suppliersList: Supliers = {
   manufacturers,
   distributers,
 };
-export default suppliers;
+export default suppliersList;
