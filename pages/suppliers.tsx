@@ -6,8 +6,8 @@ import Navbar from "../components/Navbar";
 import SecondaryBanner from "../components/SecondaryBanner";
 
 const Suppliers: NextPage = () => {
-  const [selectedTypesupplier, setSelectedTypesupplier] = useState<string>("");
-  const [selectedsupplier, setSelectedsupplier] = useState<string>("");
+  const [selectedTypesupplier, setSelectedTypesupplier] = useState("");
+  const [selectedsupplier, setSelectedsupplier] = useState("");
   return (
     <>
       <div className="relative min-h-[700px] ">
