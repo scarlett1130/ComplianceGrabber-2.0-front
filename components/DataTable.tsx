@@ -89,9 +89,7 @@ export default function DataTable({ head, body }: TeableProps) {
               : "bg-gradient-to-t from-[#0ec4c1] to-[#3f7599]"
           } `}
           onClick={PreviousPage}
-        >
-          <ArrowLeftIcon size={24} color="black" />
-        </button>
+        ></button>
         <button
           className={`  py-3 px-5 rounded-xl cursor-pointer ${
             End === body?.length || body?.length < 10
@@ -99,9 +97,7 @@ export default function DataTable({ head, body }: TeableProps) {
               : "bg-gradient-to-t from-[#0ec4c1] to-[#3f7599]"
           }`}
           onClick={NextPage}
-        >
-          <ArrowRightIcon size={24} color="black" />
-        </button>
+        ></button>
       </div>
     </div>
   );
