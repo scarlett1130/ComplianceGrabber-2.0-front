@@ -4,11 +4,13 @@ import Dropdown from "../components/Combobox";
 import suppliersList from "../utils/suppliers";
 import Navbar from "../components/Navbar";
 import SecondaryBanner from "../components/SecondaryBanner";
+import Image from "next/image";
 import {
   getLiveManufacturerData,
   getLiveDistributersData,
 } from "../utils/GetLiveData";
 import DataTable from "../components/DataTable";
+import Footer from "../components/Footer";
 
 interface table {
   head: any[];
@@ -20,34 +22,37 @@ const Suppliers: NextPage = () => {
   const [selectedsupplier, setSelectedsupplier] = useState("");
   const [Partnumbers, setPartnumbers] = useState<string[]>([]);
   const [Loading, setLoading] = useState(false);
+  const [download, setDownload] = useState<any>();
   const [liveData, setLiveData] = useState<table>();
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setLiveData(undefined);
+    setDownload(undefined);
+    e.preventDefault();
     if (selectedsupplier == "" || Partnumbers.length == 0) return;
     try {
+      setLoading(true);
       if (selectedTypesupplier == "Manufacturers") {
         const response = await getLiveManufacturerData({
           supplier: selectedsupplier,
           partnumbers: Partnumbers,
         });
         setLiveData(response?.LiveData as any);
-        console.log(liveData);
+        setDownload(response?.csv_data);
       } else {
         const response = await getLiveDistributersData({
           supplier: selectedsupplier,
           partnumbers: Partnumbers,
         });
         setLiveData(response?.LiveData as any);
-        console.log(liveData?.body);
+        setDownload(response?.csv_data);
       }
+      setLoading(false);
     } catch (e) {
       console.log(e);
+      setLoading(false);
     }
   };
-  const handleKeypress = (e: any) => {
-    if (e.charCode === 13 && Partnumbers.length > 0) {
-      handleSubmit();
-    }
-  };
+
   const handleInput = (input: string) => {
     setPartnumbers(input.split(",").filter((item) => item !== ""));
   };
@@ -60,9 +65,9 @@ const Suppliers: NextPage = () => {
       <div
         className={`flex flex-col  ${
           liveData && liveData?.head?.length > 5 ? "flex-col" : "xl:flex-row"
-        } max-w-[1700px] container xl:mx-auto mt-5 space-y-9   px-4 pb-16`}
+        } smooth-transition max-w-[1700px] container xl:mx-auto mt-5 space-y-9   px-4 pb-16`}
       >
-        <div className="space-y-4 mr-4  ">
+        <form className="space-y-4 mr-4 " onSubmit={handleSubmit}>
           <div className="md:flex space-y-6 pt-36  md:space-y-0 md:space-x-6">
             <Dropdown
               title="Select type of supplier"
@@ -88,22 +93,26 @@ const Suppliers: NextPage = () => {
               *Tip:For bulk search use commas
             </p>
             <input
-              onKeyPress={(e) => handleKeypress(e)}
               className="p-4 outline-none ring-none rounded-lg w-full font-poppins text-lg mx-2"
               placeholder="Partnumbers"
               onChange={(e) => handleInput(e.target.value)}
+              required
               type="text"
             />
           </div>
-          <div className="pt-8 mx-2">
-            <button
-              className="w-full    hover:bg-[#3873c7] smooth-transition   py-3 bg-[#3865A6] rounded-xl text-white font-poppins"
-              onClick={handleSubmit}
-            >
+          <div className="pt-8 ">
+            <button className="w-full    hover:bg-[#3873c7] smooth-transition   py-3 bg-[#3865A6] rounded-md text-white font-poppins">
               Search
             </button>
           </div>
-        </div>
+          {download && (
+            <div className="pt-8 ">
+              <button className="w-full    hover:bg-purple-800 smooth-transition   py-3 bg-purple-700 rounded-md text-white font-poppins">
+                Download
+              </button>
+            </div>
+          )}
+        </form>
         <div
           className={`flex flex-col flex-1 ${
             liveData && liveData?.head?.length > 5 ? "" : "xl:ml-9"
@@ -112,11 +121,19 @@ const Suppliers: NextPage = () => {
           {liveData && (
             <DataTable head={liveData?.head} body={liveData?.body} />
           )}
-          <div className="flex justify-center items-center h-full">
-            Your Data will appear here
-          </div>
+          {Loading && (
+            <div className="flex justify-center items-center h-full flex-1">
+              <Image
+                src="https://c.tenor.com/k-A2Bukh1lUAAAAi/loading-loading-symbol.gif"
+                width="300"
+                height="300"
+                alt="Loading"
+              />
+            </div>
+          )}
         </div>
       </div>
+      <Footer />
     </>
   );
 };

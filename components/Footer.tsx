@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 function Footer() {
@@ -19,7 +20,7 @@ function Footer() {
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
-                <h3 className="text-2xl font-poppins text-white">LOGO</h3>
+                <Image src="/logo.png" width="100" height="70" alt="logo" />
               </div>
             </div>
           </div>

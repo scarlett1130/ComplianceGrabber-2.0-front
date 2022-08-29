@@ -85,19 +85,23 @@ export default function DataTable({ head, body }: TeableProps) {
         <button
           className={`  py-3 px-5 rounded-xl cursor-pointer ${
             Start === 0 || body?.length === 1
-              ? "bg-gray-100 disabled"
-              : "bg-gradient-to-t from-[#0ec4c1] to-[#3f7599]"
+              ? "bg-blue-300 disabled"
+              : "bg-blue-700"
           } `}
           onClick={PreviousPage}
-        ></button>
+        >
+          <ArrowLeftIcon className="w-6 h-6 text-white" />
+        </button>
         <button
           className={`  py-3 px-5 rounded-xl cursor-pointer ${
             End === body?.length || body?.length < 10
               ? "bg-gray-100 disabled"
-              : "bg-gradient-to-t from-[#0ec4c1] to-[#3f7599]"
+              : "bg-blue-700"
           }`}
           onClick={NextPage}
-        ></button>
+        >
+          <ArrowRightIcon className="w-6 h-6 text-white" />
+        </button>
       </div>
     </div>
   );
