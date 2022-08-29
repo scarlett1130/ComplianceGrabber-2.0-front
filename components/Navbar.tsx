@@ -25,7 +25,7 @@ const Navbar = () => {
     <div
       className={`fixed ${
         Transparent ? "bg-transparent" : "bg-[#254153f5]"
-      } px-4 lg:px-0 flex justify-between smooth-transition lg:justify-center z-10 inset-x-0 top-0 pt-5 items-center lg:py-5   overflow-hidden lg:rounded-b-full mx-2 shadow-md shadow-black`}
+      } px-4 lg:px-0 flex justify-between smooth-transition lg:justify-center z-10 inset-x-0 top-0 pt-5 items-center lg:py-3   overflow-hidden lg:rounded-b-full mx-2 shadow-md shadow-black`}
     >
       <Sidebar show={show} setshow={setshow} />
       <div className="relative lg:absolute left-14 text-white ">
@@ -53,7 +53,7 @@ const Navbar = () => {
         />
       </button>
 
-      <div className="hidden  relative lg:flex justify-evenly items-center  text-xl text-white space-x-14 max-w-7xl ">
+      <div className="hidden  relative lg:flex justify-evenly items-center  text-lg text-white space-x-14 max-w-7xl ">
         <ButtonLink title="Home" link="/" />
         <ButtonLink title="Supplier" link="/suppliers" />
         <ButtonLink title="Generate" link="" />
