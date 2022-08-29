@@ -3,7 +3,7 @@ import React from "react";
 import { ArrowRightCircleIcon } from "@heroicons/react/20/solid";
 const Banner = () => {
   const scrollDown = () => {
-    window.scrollTo({ top: 850, behavior: "smooth" });
+    window.scrollTo({ top: 950, behavior: "smooth" });
   };
   return (
     <div className="absolute inset-0 max-h-screen ">

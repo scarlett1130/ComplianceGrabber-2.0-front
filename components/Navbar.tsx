@@ -29,7 +29,7 @@ const Navbar = () => {
     >
       <Sidebar show={show} setshow={setshow} />
       <div className="relative lg:absolute lg:left-14 text-white ">
-        <Image src="/logo.png" width="100" height="70" alt="logo" />
+        <Image src="/logo.png" width="90" height="60" alt="logo" />
       </div>
 
       <button
