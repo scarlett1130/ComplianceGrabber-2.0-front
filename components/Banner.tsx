@@ -28,7 +28,7 @@ const Banner = () => {
       </div>
       <div className="absolute bottom-24 inset-x-auto w-full mt-56 sm:mt-36 flex justify-center px-2">
         <button
-          className="font-poppins relative overflow-hidden text-xl group text-white rounded-full inline-flex items-center justify-center space-x-4  py-2 border-4 border-white  min-w-[350px] px-4"
+          className="font-poppins relative overflow-hidden text-lg group text-white rounded-full inline-flex items-center justify-center space-x-4  py-1 border-4 border-white  min-w-[350px] px-4"
           onClick={scrollDown}
         >
           <p className="lg:z-10 ">GET STARTED</p>
