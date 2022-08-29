@@ -11,6 +11,7 @@ import {
 } from "../utils/GetLiveData";
 import DataTable from "../components/DataTable";
 import Footer from "../components/Footer";
+import fileDownload from "js-file-download";
 
 interface table {
   head: any[];
@@ -56,11 +57,14 @@ const Suppliers: NextPage = () => {
   const handleInput = (input: string) => {
     setPartnumbers(input.split(",").filter((item) => item !== ""));
   };
+  const Export = () => {
+    fileDownload(download, "TableData.csv");
+  };
   return (
     <>
       <div className="relative min-h-[700px] ">
         <Navbar />
-        <SecondaryBanner />
+        <SecondaryBanner message="Search our suppliers with partnumbers"/>
       </div>
       <div
         className={`flex flex-col  ${
@@ -105,14 +109,17 @@ const Suppliers: NextPage = () => {
               Search
             </button>
           </div>
-          {download && (
-            <div className="pt-8 ">
-              <button className="w-full    hover:bg-purple-800 smooth-transition   py-3 bg-purple-700 rounded-md text-white font-poppins">
-                Download
-              </button>
-            </div>
-          )}
         </form>
+        {download && (
+          <div className="pt-8 ">
+            <button
+              className="w-full    hover:bg-purple-800 smooth-transition   py-3 bg-purple-700 rounded-md text-white font-poppins"
+              onClick={Export}
+            >
+              Download
+            </button>
+          </div>
+        )}
         <div
           className={`flex flex-col flex-1 ${
             liveData && liveData?.head?.length > 5 ? "" : "xl:ml-9"

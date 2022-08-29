@@ -1,7 +1,11 @@
 import Image from "next/image";
 import React from "react";
 
-function SecondaryBanner() {
+interface BannerProps {
+  message: string;
+}
+
+function SecondaryBanner({ message }: BannerProps) {
   return (
     <div className="absolute inset-0 max-h-[700px] shadow-lg shadow-blue-900">
       <Image
@@ -13,10 +17,7 @@ function SecondaryBanner() {
       <div className="absolute inset-0 opacity-70 bg-blue-900 bg-blend-lighten" />
       <div className="absolute inset-0 flex justify-center items-center">
         <h1 className="inline-flex flex-col  md:flex-row items-center font-medium  leading-loose text-3xl md:text-4xl lg:text-6xl text-white px-4 text-center">
-          Search suppliers with{" "}
-          <p className="text-yellow-400 font-poppins uppercase underline decoration-2 underline-offset-8">
-            &#160;partNumbers
-          </p>
+          {message}
         </h1>
       </div>
     </div>
