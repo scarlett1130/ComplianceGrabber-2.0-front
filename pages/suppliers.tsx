@@ -64,7 +64,7 @@ const Suppliers: NextPage = () => {
     <>
       <div className="relative min-h-[700px] ">
         <Navbar />
-        <SecondaryBanner message="Search our suppliers with partnumbers"/>
+        <SecondaryBanner message="Search our suppliers with partnumbers" />
       </div>
       <div
         className={`flex flex-col  ${
@@ -131,7 +131,7 @@ const Suppliers: NextPage = () => {
           {Loading && (
             <div className="flex justify-center items-center h-full flex-1">
               <Image
-                src="https://c.tenor.com/k-A2Bukh1lUAAAAi/loading-loading-symbol.gif"
+                src="https://cdn.dribbble.com/users/73104/screenshots/2832940/media/82692933cb4ad944b6db91b889d01fe4.gif"
                 width="300"
                 height="300"
                 alt="Loading"
