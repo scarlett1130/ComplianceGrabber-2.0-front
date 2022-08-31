@@ -8,7 +8,7 @@ const Banner = () => {
   return (
     <div className="absolute inset-0 max-h-screen ">
       <video
-        src="https://cdn.videvo.net/videvo_files/video/free/2014-06/large_watermarked/Earth_preview.mp4"
+        src="/Animation.mov"
         autoPlay
         muted
         loop
