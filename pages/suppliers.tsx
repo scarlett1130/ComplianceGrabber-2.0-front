@@ -62,84 +62,91 @@ const Suppliers: NextPage = () => {
   };
   return (
     <>
-      <div className="relative min-h-[700px] ">
+      <div className="relative min-h-screen ">
         <Navbar />
         <SecondaryBanner message="Search our suppliers with partnumbers" />
-      </div>
-      <div
-        className={`flex flex-col  ${
-          liveData && liveData?.head?.length > 5 ? "flex-col" : "xl:flex-row"
-        } smooth-transition max-w-[1700px] container xl:mx-auto mt-5 space-y-9   px-4 pb-16`}
-      >
-        <form className="space-y-4 mr-4 " onSubmit={handleSubmit}>
-          <div className="md:flex space-y-6 pt-36  md:space-y-0 md:space-x-6">
-            <Dropdown
-              title="Select type of supplier"
-              options={["Manufacturers", "Distributors"]}
-              selectedoption={selectedTypesupplier}
-              setSelectedoption={setSelectedTypesupplier}
-            />
-            <div className="">
-              <Dropdown
-                title="Select supplier"
-                options={
-                  selectedTypesupplier == "Manufacturers"
-                    ? suppliersList.manufacturers
-                    : suppliersList.distributers
-                }
-                selectedoption={selectedsupplier}
-                setSelectedoption={setSelectedsupplier}
-              />
-            </div>
-          </div>
-          <div className="pt-8">
-            <p className="text-blue-800 text-md font-semibold">
-              *Tip:For bulk search use commas
-            </p>
-            <input
-              className="p-4 outline-none ring-none rounded-lg w-full font-poppins text-lg mx-2"
-              placeholder="Partnumbers"
-              onChange={(e) => handleInput(e.target.value)}
-              required
-              type="text"
-            />
-          </div>
-          <div className="pt-8 ">
-            <button className="w-full    hover:bg-[#3873c7] smooth-transition   py-3 bg-[#3865A6] rounded-md text-white font-poppins">
-              Search
-            </button>
-          </div>
-        </form>
-        {download && (
-          <div className="pt-8 ">
-            <button
-              className="w-full    hover:bg-purple-800 smooth-transition   py-3 bg-purple-700 rounded-md text-white font-poppins"
-              onClick={Export}
+        <div className="absolute inset-x-0 inset-b-0 top-5 h-full pt-14 xl:pt-2 flex justify-center items-center">
+          <div
+            className={`flex  flex-col xl:flex-row smooth-transition w-full  mt-5 space-y-9 xl:space-y-0 space-x-0  xl:space-x-9 lg:px-16 pb-16`}
+          >
+            <form
+              className="space-y-4 group hover:scale-[1.009] smooth-transition shadow-xl shadow-[#666377] bg-gradient bg-gradient-to-r from-[#3675A5] to-[#666377]   px-7 rounded-lg "
+              onSubmit={handleSubmit}
             >
-              Download
-            </button>
-          </div>
-        )}
-        <div
-          className={`flex flex-col flex-1 ${
-            liveData && liveData?.head?.length > 5 ? "" : "xl:ml-9"
-          }  border border-dashed border-[#3873c7] shadow-xl rounded-lg w-full   min-h-[700px] overflow-x-auto`}
-        >
-          {liveData && (
-            <DataTable head={liveData?.head} body={liveData?.body} />
-          )}
-          {Loading && (
-            <div className="flex justify-center items-center h-full flex-1">
-              <Image
-                src="https://cdn.dribbble.com/users/73104/screenshots/2832940/media/82692933cb4ad944b6db91b889d01fe4.gif"
-                width="300"
-                height="300"
-                alt="Loading"
-              />
+              <div className="relative text-2xl w-full text-white pt-9 text-center ">
+                <p>Fill the form and search for data</p>
+                <hr className=" absolute w-0 group-hover:w-full smooth-transition" />
+              </div>
+              <div className="md:flex space-y-6 pt-36  md:space-y-0 md:space-x-6">
+                <Dropdown
+                  title="Select type of supplier"
+                  options={["Manufacturers", "Distributors"]}
+                  selectedoption={selectedTypesupplier}
+                  setSelectedoption={setSelectedTypesupplier}
+                />
+                <div className="">
+                  <Dropdown
+                    title="Select supplier"
+                    options={
+                      selectedTypesupplier == "Manufacturers"
+                        ? suppliersList.manufacturers
+                        : suppliersList.distributers
+                    }
+                    selectedoption={selectedsupplier}
+                    setSelectedoption={setSelectedsupplier}
+                  />
+                </div>
+              </div>
+              <div className="pt-8">
+                <p className="text-white text-md font-semibold">
+                  *Tip:For bulk search use commas
+                </p>
+                <input
+                  className="p-4 outline-none ring-none rounded-lg w-full font-poppins text-lg mx-2"
+                  placeholder="Partnumbers"
+                  onChange={(e) => handleInput(e.target.value)}
+                  required
+                  type="text"
+                />
+              </div>
+              <div className="pt-8 ">
+                <button className="w-full    text-black smooth-transition   py-3 bg-[#F6E2A1] rounded-md font-poppins">
+                  Search
+                </button>
+              </div>
+            </form>
+            {download && (
+              <div className="pt-8 ">
+                <button
+                  className="w-full    hover:bg-purple-800 smooth-transition   py-3 bg-purple-700 rounded-md text-white font-poppins"
+                  onClick={Export}
+                >
+                  Download
+                </button>
+              </div>
+            )}
+            <div
+              className={`flex flex-col flex-1   border border-dashed border-[#3873c7] shadow-xl shadow-black rounded-lg w-full   min-h-[700px] overflow-x-auto`}
+            >
+              <p>Data Visualizer</p>
+              {liveData && (
+                <DataTable head={liveData?.head} body={liveData?.body} />
+              )}
+              {Loading && (
+                <div className="flex justify-center items-center h-full flex-1">
+                  <Image
+                    src="https://cdn.dribbble.com/users/73104/screenshots/2832940/media/82692933cb4ad944b6db91b889d01fe4.gif"
+                    width="300"
+                    height="300"
+                    alt="Loading"
+                  />
+                </div>
+              )}
             </div>
-          )}
+          </div>
         </div>
       </div>
+
       <Footer />
     </>
   );
