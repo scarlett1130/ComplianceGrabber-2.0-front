@@ -32,7 +32,7 @@ function Dropdown({
   };
   return (
     <Combobox as="div" value={selectedoption} onChange={handleSelectedMember}>
-      <Combobox.Label className="block text-lg font-poppins text-white">
+      <Combobox.Label className="block text-md font-poppins text-gray-700">
         {title}
       </Combobox.Label>
       <div className="relative">
