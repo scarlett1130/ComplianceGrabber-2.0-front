@@ -8,23 +8,25 @@ function Bulksearch() {
     <div>
       <div className="relative min-h-screen">
         <Navbar />
-        <SecondaryBanner message="Search without specifying the suppplier" />
-        <div className="absolute inset-0 container mx-auto flex ">
-          <div className="relative flex  justify-center items-center flex-1 overflow-hidden ">
-            <div className="w-full">
-              <div className="py-16  w-full flex justify-center items-center">
-                <h1 className="text-white text-3xl  font-poppins">
-                  The easiest way to find supplier
-                </h1>
-              </div>
-
-              <div className="flex flex-1 ">
+        <div className="absolute inset-0  ">
+          <video
+            src="/Search_by_SPN.mp4"
+            autoPlay
+            muted
+            loop
+            className="absolute inset-0 h-full w-full object-fill"
+          />
+        </div>
+        <div className="absolute inset-x-0 bottom-36 shadow-lg shadow-black container mx-auto flex bg-black bg-opacity-30">
+          <div className="relative flex  mx-4 justify-center items-center flex-1 overflow-hidden ">
+            <div className="w-full ">
+              <div className="flex flex-col md:flex-row flex-1  ">
                 <input
-                  className="flex w-full py-5 shadow-md text-white text-lg text-center text-gray-5   font-poppins bg-transparent border border-gray-400 focus:outline-0  focus:ring-none rounded-l-full"
-                  placeholder="partnumbers..."
+                  className="flex w-full py-5 shadow-md text-white text-lg text-center text-gray-5 placeholder-white   font-poppins bg-transparent border border-gray-400 focus:outline-0  focus:ring-none rounded-full"
+                  placeholder="Type some partnumbers..."
                 />
-                <button className=" py-5   hover:bg-orange-700  smooth-transition justify-center items-center text-white font-poppins text-lg flex flex-1 min-w-[150px] bg-orange-600 rounded-r-full">
-                  <p>Find </p>
+                <button className=" py-5  mt-6 md:mt-0  ml-0 md:ml-3 smooth-transition justify-center items-center text-white font-poppins text-lg flex flex-1 min-w-[150px] bg-gradient-to-r from-indigo-500  to-[#84FDFF] rounded-full">
+                  <p>Find Supplier</p>
                 </button>
               </div>
             </div>
