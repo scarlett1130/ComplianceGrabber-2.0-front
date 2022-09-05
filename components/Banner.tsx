@@ -12,7 +12,7 @@ const Banner = () => {
         autoPlay
         muted
         loop
-        className="absolute inset-0 h-full w-full object-fill scale-105"
+        className="absolute inset-0 h-full w-full object-fill scale-y-105"
       />
 
       <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center ">
