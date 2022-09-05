@@ -8,7 +8,7 @@ const Banner = () => {
   return (
     <div className="absolute inset-0 max-h-screen ">
       <video
-        src="/animation.mp4"
+        src="/Animation.mp4"
         autoPlay
         muted
         loop
