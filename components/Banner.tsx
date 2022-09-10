@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const Banner = () => {
   const scrollDown = () => {
-    window.scrollTo({ top: 950, behavior: "smooth" });
+    window.scrollTo({ top: 1150, behavior: "smooth" });
   };
   return (
     <div className="absolute inset-0 max-h-screen bg-blue-900 ">
