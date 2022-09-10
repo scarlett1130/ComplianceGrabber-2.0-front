@@ -1,6 +1,8 @@
 import React from "react";
 import { Disclosure } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 const faqs = [
   {
     question: "What's the best thing about the tool?",
@@ -44,14 +46,32 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 function Faq() {
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
   return (
-    <div className="bg-gray-50">
+    <div className="bg-gray-50" ref={ref}>
       <div className="max-w-7xl mx-auto py-12 px-4 sm:py-16 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto divide-y-2 divide-gray-200">
-          <h2 className="text-center text-3xl tracking-tight font-bold text-gray-900 sm:text-4xl">
+          <motion.h2
+            className="text-center text-3xl tracking-tight font-bold text-gray-900 sm:text-4xl"
+            animate={{
+              y: inView ? "0" : 200,
+              opacity: inView ? "1" : "0",
+            }}
+            transition={{ duration: 0.4 }}
+          >
             Frequently asked questions
-          </h2>
-          <dl className="mt-6 space-y-6 divide-y divide-gray-200">
+          </motion.h2>
+          <motion.dl
+            className="mt-6 space-y-6 divide-y divide-gray-200"
+            animate={{
+              y: inView ? "0" : 200,
+              opacity: inView ? "1" : "0",
+            }}
+            transition={{ duration: 0.6 }}
+          >
             {faqs.map((faq) => (
               <Disclosure as="div" key={faq.question} className="pt-6">
                 {({ open }) => (
@@ -82,7 +102,7 @@ function Faq() {
                 )}
               </Disclosure>
             ))}
-          </dl>
+          </motion.dl>
         </div>
       </div>
     </div>

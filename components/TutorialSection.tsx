@@ -1,11 +1,27 @@
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid";
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 function TutorialSection() {
+  const [Appeared, setAppeared] = useState(false);
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
+  useEffect(() => {
+    if (inView == true) setAppeared(true);
+  }, [inView]);
   return (
-    <div className="w-full py-16 bg-[#28546df5] bg-blend-color-burn">
+    <div ref={ref} className="w-full py-16 bg-[#28546df5] bg-blend-color-burn">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 min-h-[500px] px-4">
-        <div className="py-16 space-y-6 flex flex-col justify-center">
+        <motion.div
+          animate={{
+            x: inView ? "0" : Appeared ? 0 : -500,
+            opacity: inView ? "1" : "0",
+          }}
+          transition={{ duration: 0.5 }}
+          className="py-16 space-y-6 flex flex-col justify-center"
+        >
           <h1 className="text-5xl font-poppins text-white">
             How does it work ?
           </h1>
@@ -27,8 +43,15 @@ function TutorialSection() {
               </a>
             </div>
           </div>
-        </div>
-        <div className="rounded-xl overflow-hidden min-h-[500px]">
+        </motion.div>
+        <motion.div
+          className={`rounded-xl overflow-hidden min-h-[500px]`}
+          animate={{
+            y: inView ? "0" : Appeared ? 0 : 300,
+            opacity: inView ? "1" : "0",
+          }}
+          transition={{ duration: 0.5 }}
+        >
           <iframe
             className="w-full h-full"
             src="https://www.youtube.com/embed/MAtaT8BZEAo"
@@ -37,7 +60,7 @@ function TutorialSection() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
