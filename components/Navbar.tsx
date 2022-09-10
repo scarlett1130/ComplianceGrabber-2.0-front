@@ -25,7 +25,7 @@ const Navbar = () => {
     <div
       className={`fixed ${
         Transparent ? "bg-transparent" : "bg-[#254153f5]"
-      } px-4 lg:px-0 flex justify-between smooth-transition lg:justify-center z-10 inset-x-0 top-0  items-center lg:py-4   overflow-hidden lg:rounded-b-full mx-2 shadow-md shadow-gray-800`}
+      } px-4 lg:px-0 flex justify-between smooth-transition lg:justify-center z-10 inset-x-0 top-0  items-center pb-2 lg:pt-6   overflow-hidden lg:rounded-b-full mx-2 shadow-md shadow-gray-800`}
     >
       <Sidebar show={show} setshow={setshow} />
       <div className="relative lg:absolute lg:left-14 text-white ">
