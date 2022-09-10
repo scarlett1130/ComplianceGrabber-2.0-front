@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Dropdown from "../components/Combobox";
 import suppliersList from "../utils/suppliers";
 import Navbar from "../components/Navbar";
-import SecondaryBanner from "../components/SecondaryBanner";
 import Image from "next/image";
 import {
   getLiveManufacturerData,

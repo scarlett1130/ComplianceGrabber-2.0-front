@@ -29,11 +29,13 @@ const Navbar = () => {
       } px-4 lg:px-0 flex justify-between smooth-transition lg:justify-center z-10 inset-x-0 top-0  items-center pb-2 lg:pt-6   overflow-hidden lg:rounded-b-full mx-2 shadow-md shadow-gray-800`}
     >
       <Sidebar show={show} setshow={setshow} />
-      <Link className="relative lg:absolute lg:left-14 text-white" href="/">
-        <a>
-          <Image src="/logo.png" width="90" height="60" alt="logo" />
-        </a>
-      </Link>
+      <div className="relative lg:absolute lg:left-14 text-white">
+        <Link href="/">
+          <a>
+            <Image src="/logo.png" width="90" height="60" alt="logo" />
+          </a>
+        </Link>
+      </div>
 
       <button
         onClick={() => setshow(!show)}
