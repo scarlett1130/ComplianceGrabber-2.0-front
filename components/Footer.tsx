@@ -1,5 +1,7 @@
 import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 function Footer() {
   const navigation = {
@@ -10,8 +12,12 @@ function Footer() {
       { name: "Insights", href: "#" },
     ],
   };
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
   return (
-    <footer className="bg-gray-800" aria-labelledby="footer-heading">
+    <footer className="bg-gray-800" aria-labelledby="footer-heading" ref={ref}>
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -19,9 +25,15 @@ function Footer() {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
+              <motion.div
+                animate={{
+                  x: inView ? "0" : -200,
+                  opacity: inView ? "1" : "0",
+                }}
+                transition={{ duration: 0.4 }}
+              >
                 <Image src="/logo.png" width="100" height="70" alt="logo" />
-              </div>
+              </motion.div>
             </div>
           </div>
           <div className="mt-8 xl:mt-0">

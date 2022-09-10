@@ -1,16 +1,42 @@
-import Image from "next/image";
-import React from "react";
-import { Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import React from "react";
+import Image from "next/image";
+import { Autoplay } from "swiper";
+import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useInView } from "react-intersection-observer";
+
 function SuppliersSwiper() {
-  const Suppliers_LOGOS = ["/about.svg", "/blogDark.svg", "/extension.svg"];
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  });
+  const Suppliers_LOGOS = [
+    "Rs.png",
+    "Festo_logo.svg.png",
+    "Molex-Logo.png",
+    "mouser.png",
+    "wago.png",
+    "dk.webp",
+  ];
   return (
-    <div className="w-full relative  flex flex-col justify-center py-8">
+    <div
+      className="w-full relative  flex flex-col justify-center py-9 cursor-pointer"
+      ref={ref}
+    >
       <div className="flex justify-center pb-6">
-        <p className="font-poppins text-4xl text-black">Our Suppliers</p>
+        <motion.h1
+          className=" text-4xl text-gray-600 font-bold uppercase"
+          animate={{
+            y: inView ? "0" : 200,
+            opacity: inView ? "1" : "0",
+          }}
+          transition={{ duration: 0.5 }}
+        >
+          Trusted Suppliers
+        </motion.h1>
       </div>
-      <div className="container mx-auto">
+      <div className=" py-7">
         <Swiper
           modules={[Autoplay]}
           slidesPerView={6}
@@ -26,18 +52,16 @@ function SuppliersSwiper() {
           spaceBetween={5}
           breakpoints={{
             320: { slidesPerView: 2 },
-            768: { slidesPerView: 4 },
+            768: { slidesPerView: 3 },
             1025: { slidesPerView: 6 },
           }}
           className="swiper-wrapper"
         >
-          {Array(16)
-            .fill(null)
-            .map((logo) => (
-              <SwiperSlide key={logo}>
-                <Image src="/faqDark.svg" width={60} height={60} alt="ddf" />
-              </SwiperSlide>
-            ))}
+          {Suppliers_LOGOS.map((logo, i) => (
+            <SwiperSlide key={i}>
+              <Image src={`/${logo}`} width={200} height={100} alt={logo} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </div>

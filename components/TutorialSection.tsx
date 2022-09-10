@@ -16,7 +16,7 @@ function TutorialSection() {
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 min-h-[500px] px-4">
         <motion.div
           animate={{
-            x: inView ? "0" : Appeared ? 0 : -500,
+            x: inView ? "0" : -500,
             opacity: inView ? "1" : "0",
           }}
           transition={{ duration: 0.5 }}
