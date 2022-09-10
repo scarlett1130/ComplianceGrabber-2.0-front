@@ -55,6 +55,7 @@ function FeatureSection() {
   ];
   useEffect(() => {
     if (inView == true) setAppeared(true);
+    return () => setAppeared(false);
   }, [inView]);
   return (
     <motion.div

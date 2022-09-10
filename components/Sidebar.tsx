@@ -10,7 +10,7 @@ const Sidebar = ({ show, setshow }: SidebarProps) => {
     <div
       className={`fixed z-40  lg:hidden  px-16 flex flex-col inset-y-0 ${
         show ? " right-0 " : " -right-[264px]"
-      } smooth-transition justify-center bg-[#0B1120] shadow-lg rounded-l-2xl shadow-white space-y-16`}
+      } smooth-transition justify-center bg-[#1a5268] shadow-lg rounded-l-2xl shadow-white space-y-16`}
     >
       <button
         className="absolute top-5 left-1 hover:scale-105 smooth-transition"
@@ -43,10 +43,8 @@ const Sidebar = ({ show, setshow }: SidebarProps) => {
           </defs>
         </svg>
       </button>
-      <ButtonLink title="Manufacturers" link="" />
-      <ButtonLink title="Distributers" link="" />
-      <ButtonLink title="Generate" link="" />
-      <ButtonLink title="Need help ?" link="" />
+      <ButtonLink title="Home" link="/" />
+      <ButtonLink title="Dashbord" link="/dashbord" />
     </div>
   );
 };

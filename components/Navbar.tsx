@@ -6,6 +6,7 @@ import React, { useState, useEffect } from "react";
 import ButtonLink from "./ButtonLink";
 import Sidebar from "./Sidebar";
 import Image from "next/image";
+import Link from "next/link";
 const Navbar = () => {
   const [show, setshow] = useState(false);
   const [Transparent, setTransparent] = useState(true);
@@ -28,9 +29,11 @@ const Navbar = () => {
       } px-4 lg:px-0 flex justify-between smooth-transition lg:justify-center z-10 inset-x-0 top-0  items-center pb-2 lg:pt-6   overflow-hidden lg:rounded-b-full mx-2 shadow-md shadow-gray-800`}
     >
       <Sidebar show={show} setshow={setshow} />
-      <div className="relative lg:absolute lg:left-14 text-white ">
-        <Image src="/logo.png" width="90" height="60" alt="logo" />
-      </div>
+      <Link className="relative lg:absolute lg:left-14 text-white" href="/">
+        <a>
+          <Image src="/logo.png" width="90" height="60" alt="logo" />
+        </a>
+      </Link>
 
       <button
         onClick={() => setshow(!show)}
@@ -44,9 +47,7 @@ const Navbar = () => {
 
       <div className="hidden  relative lg:flex justify-evenly items-center  text-lg text-white space-x-14 max-w-7xl ">
         <ButtonLink title="Home" link="/" />
-        <ButtonLink title="Get Data" link="/suppliers" />
-        <ButtonLink title="Find Suppliers" link="/bulksearch" />
-        <ButtonLink title="Need help ?" link="" />
+        <ButtonLink title="Dashbord" link="/dashbord" />
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ function TutorialSection() {
   });
   useEffect(() => {
     if (inView == true) setAppeared(true);
+    return () => setAppeared(false);
   }, [inView]);
   return (
     <div ref={ref} className="w-full py-16 bg-[#28546df5] bg-blend-color-burn">
