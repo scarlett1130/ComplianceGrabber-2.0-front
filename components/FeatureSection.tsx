@@ -79,7 +79,7 @@ function FeatureSection() {
                 key={feature.name}
                 className="pt-6"
                 animate={{
-                  x: inView ? "0" : i % 2 == 0 ? 400 : -400,
+                  x: inView ? "0" : i % 2 == 0 ? 200 : -200,
                   opacity: inView ? "1" : "0",
                 }}
                 transition={{ duration: 0.7 }}
