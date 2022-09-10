@@ -1,69 +1,21 @@
 import { NextPage } from "next";
+import Link from "next/link";
 import React, { useState } from "react";
-import Dropdown from "../components/Combobox";
-import suppliersList from "../utils/suppliers";
-import Navbar from "../components/Navbar";
+import StatCard from "../components/DashbordElements/StatCard";
+import DashbordSideBar from "../components/DashbordSideBar";
 import Image from "next/image";
-import {
-  getLiveManufacturerData,
-  getLiveDistributersData,
-} from "../utils/GetLiveData";
-import DataTable from "../components/DataTable";
-import Footer from "../components/Footer";
-import fileDownload from "js-file-download";
-import Dashbord from "../components/Dashbord";
-
-interface table {
-  head: any[];
-  body: any[];
-}
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
+import Overview from "../components/DashbordElements/Overview";
 const Suppliers: NextPage = () => {
-  const [selectedTypesupplier, setSelectedTypesupplier] =
-    useState("Distributors");
-  const [selectedsupplier, setSelectedsupplier] = useState("");
-  const [Partnumbers, setPartnumbers] = useState<string[]>([]);
-  const [Loading, setLoading] = useState(false);
-  const [download, setDownload] = useState<any>();
-  const [liveData, setLiveData] = useState<table>();
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    setLiveData(undefined);
-    setDownload(undefined);
-    e.preventDefault();
-    if (selectedsupplier == "" || Partnumbers.length == 0) return;
-    try {
-      setLoading(true);
-      if (selectedTypesupplier == "Manufacturers") {
-        const response = await getLiveManufacturerData({
-          supplier: selectedsupplier,
-          partnumbers: Partnumbers,
-        });
-        setLiveData(response?.LiveData as any);
-        setDownload(response?.csv_data);
-      } else {
-        const response = await getLiveDistributersData({
-          supplier: selectedsupplier,
-          partnumbers: Partnumbers,
-        });
-        setLiveData(response?.LiveData as any);
-        setDownload(response?.csv_data);
-      }
-      setLoading(false);
-    } catch (e) {
-      console.log(e);
-      setLoading(false);
-    }
-  };
-
-  const handleInput = (input: string) => {
-    setPartnumbers(input.split(",").filter((item) => item !== ""));
-  };
-  const Export = () => {
-    fileDownload(download, "TableData.csv");
-  };
   return (
-    <>
-      <Dashbord />
-    </>
+    <div className="relative flex ">
+      <DashbordSideBar />
+
+      <div className="p-5 w-full bg-gray-100 ">
+        <Overview />
+      </div>
+    </div>
   );
 };
 

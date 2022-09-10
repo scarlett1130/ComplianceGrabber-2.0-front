@@ -1,8 +1,8 @@
 import "swiper/css";
 import React from "react";
 import Image from "next/image";
-import { Autoplay } from "swiper";
 import { motion } from "framer-motion";
+import { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useInView } from "react-intersection-observer";
 
