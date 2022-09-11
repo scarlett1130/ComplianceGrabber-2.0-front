@@ -34,7 +34,7 @@ const Banner = () => {
         </p> */}
       </motion.div>
       <div className="absolute bottom-5 inset-x-auto w-full mt-[18rem] sm:mt-36 flex justify-center px-2 ">
-        <div className="flex flex-col space-y-4 ">
+        <div className="flex  space-x-2 ">
           <motion.button
             initial={{ opacity: 0, x: "-100vh" }}
             animate={{ opacity: 1, x: 0 }}
