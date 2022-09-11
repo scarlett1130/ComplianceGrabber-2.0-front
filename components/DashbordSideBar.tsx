@@ -8,9 +8,9 @@ function DashbordSideBar() {
     <div
       className={`flex md:block bg-gray-200 ${
         showSidebar
-          ? "absolute md:relative inset-y-0 left-0 z-20 min-w-[250px] sidebar-color "
+          ? "absolute md:relative inset-y-0 left-0 z-20 min-w-[200px] sidebar-color "
           : ""
-      } justify-center items-center smooth-tranisiton md:sidebar-color min-h-screen px-2  lg:min-w-[300px] md:px-4 py-4`}
+      } justify-center items-center smooth-tranisiton md:sidebar-color min-h-screen px-2  lg:min-w-[200px] md:px-4 py-4`}
     >
       <div className={`${showSidebar ? "block" : "hidden md:block "}`}>
         <button
