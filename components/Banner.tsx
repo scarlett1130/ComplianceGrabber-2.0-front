@@ -26,12 +26,12 @@ const Banner = () => {
         <h1 className="text-4xl font-poppins tracking-tight mt-32 sm:mt-2  text-white sm:text-5xl lg:text-6xl">
           ComplianceGrabber 2.0
         </h1>
-        <p className="mt-6 hidden sm:block text-xl text-white font-poppins text-center leading-10">
+        {/* <p className="mt-6 hidden sm:block text-xl text-white font-poppins text-center leading-10">
           You’re digital tool to get all you need in one place and from all the
           best suppliers,we strive to make all the product details available for
           you,coming from the most used and trusted suppliers all around the
           Globe !
-        </p>
+        </p> */}
       </motion.div>
       <div className="absolute bottom-16 inset-x-auto w-full mt-[18rem] sm:mt-36 flex justify-center px-2 ">
         <motion.button
