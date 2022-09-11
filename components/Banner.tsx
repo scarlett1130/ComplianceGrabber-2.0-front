@@ -41,7 +41,7 @@ const Banner = () => {
           className="font-poppins rounded-l-full  relative hover:scale-105 mx-2 overflow-hidden text-lg group text-white rounded-md inline-flex items-center justify-center space-x-4  py-3 border-4 border-white  min-w-[350px] px-4"
           onClick={scrollDown}
         >
-          <p className="lg:z-10 ">GO DASHBORD</p>
+          <p className="lg:z-10 ">LOGIN</p>
 
           <div className=" hidden lg:block smooth-transition w-[250px] h-[100px] group-hover:translate-x-[175px]  absolute -left-[266px]" />
           <div className=" hidden lg:block w-[250px] smooth-transition h-[100px] group-hover:-translate-x-[175px] absolute  -right-[250px]" />
