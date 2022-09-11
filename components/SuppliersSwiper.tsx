@@ -59,7 +59,7 @@ function SuppliersSwiper() {
         >
           {Suppliers_LOGOS.map((logo, i) => (
             <SwiperSlide key={i}>
-              <Image src={`/${logo}`} width={90} height={90} alt={logo} />
+              <Image src={`/${logo}`} width={50} height={50} alt={logo} />
             </SwiperSlide>
           ))}
         </Swiper>
