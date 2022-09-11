@@ -33,31 +33,25 @@ const Banner = () => {
           Globe !
         </p> */}
       </motion.div>
-      <div className="absolute bottom-16 inset-x-auto w-full mt-[18rem] sm:mt-36 flex justify-center px-2 ">
-        <div>
+      <div className="absolute bottom-5 inset-x-auto w-full mt-[18rem] sm:mt-36 flex justify-center px-2 ">
+        <div className="flex flex-col space-y-4 ">
           <motion.button
             initial={{ opacity: 0, x: "-100vh" }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6, duration: 0.4 }}
-            className="font-poppins rounded-l-full  bg-[#12405A]relative hover:scale-105 mx-2 overflow-hidden text-lg group text-white rounded-md inline-flex items-center justify-center space-x-4  py-3 border border-white  min-w-[350px] px-4"
+            className="font-poppins  relative  mx-2 overflow-hidden shadow-sm shadow-green-600 hover:bg-gray-400  smooth-transition text-lg group text-white rounded-md inline-flex items-center justify-center space-x-4  py-3 border border-white  min-w-[350px] px-6"
             onClick={scrollDown}
           >
             <p className="lg:z-10 ">LOGIN</p>
-
-            <div className=" hidden lg:block smooth-transition w-[250px] h-[100px] group-hover:translate-x-[175px]  absolute -left-[266px]" />
-            <div className=" hidden lg:block w-[250px] smooth-transition h-[100px] group-hover:-translate-x-[175px] absolute  -right-[250px]" />
           </motion.button>
           <motion.button
             initial={{ opacity: 0, x: "-100vh" }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.9, duration: 0.4 }}
-            className="font-poppins rounded-r-full bg-[#12405A] relative mx-2  overflow-hidden text-lg group text-white rounded-md inline-flex items-center justify-center space-x-4  py-3 border border-white  min-w-[350px] px-4"
+            className="font-poppins  relative mx-2  overflow-hidden shadow-sm shadow-green-600 hover:bg-gray-400  smooth-transition text-lg group text-white rounded-md inline-flex items-center justify-center space-x-4  py-3 border border-white  min-w-[350px] px-6"
             onClick={scrollDown}
           >
             <p className="lg:z-10 ">GET STARTED</p>
-
-            <div className="  hidden lg:block smooth-transition w-[250px] h-[100px] group-hover:translate-x-[175px]  absolute -left-[266px]" />
-            <div className=" hidden lg:block w-[250px] smooth-transition h-[100px] group-hover:-translate-x-[175px] absolute  -right-[250px]" />
           </motion.button>
         </div>
       </div>
