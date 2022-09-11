@@ -18,7 +18,7 @@ const Banner = () => {
       />
 
       <motion.div
-        className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center "
+        className="relative max-w-7xl mx-auto  pt-16 pb-24 px-4 sm:py-32 sm:px-6 lg:px-8 text-center "
         initial={{ opacity: 1, y: "100vh" }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
