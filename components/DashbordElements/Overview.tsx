@@ -23,7 +23,7 @@ function Overview() {
         <StatCard title="Manufacturers" quantity={7} />
         <StatCard title="Distributers" quantity={3} />
       </div>
-      <div className="w-full px-4">
+      <div className="w-full px-4 mt-16">
         <Carousel
           infiniteLoop
           autoPlay
@@ -34,7 +34,7 @@ function Overview() {
           showStatus={false}
         >
           {Suppliers_LOGOS.map((logo, i) => (
-            <div className="w-full h-[500px]" key={i}>
+            <div className="w-full h-[550px]" key={i}>
               <Image
                 src={`/${logo}`}
                 layout="fill"
