@@ -12,7 +12,7 @@ function SuppliersSwiper() {
     threshold: 0,
   });
   const Suppliers_LOGOS = [
-    "Rs.png",
+    "RS.png",
     "Festo_logo.svg.png",
     "Molex-Logo.png",
     "mouser.png",
@@ -59,7 +59,7 @@ function SuppliersSwiper() {
         >
           {Suppliers_LOGOS.map((logo, i) => (
             <SwiperSlide key={i}>
-              <Image src={`/${logo}`} width={200} height={100} alt={logo} />
+              <Image src={`/${logo}`} width={90} height={90} alt={logo} />
             </SwiperSlide>
           ))}
         </Swiper>
