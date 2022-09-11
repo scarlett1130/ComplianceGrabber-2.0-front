@@ -23,7 +23,7 @@ const Banner = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-4xl font-poppins tracking-tight mt-24 sm:mt-2  text-white sm:text-5xl lg:text-6xl">
+        <h1 className="text-4xl font-poppins tracking-tight mt-16 sm:mt-2  text-white sm:text-5xl lg:text-6xl">
           ComplianceGrabber 2.0
         </h1>
         {/* <p className="mt-6 hidden sm:block text-xl text-white font-poppins text-center leading-10">
