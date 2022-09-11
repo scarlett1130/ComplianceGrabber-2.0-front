@@ -33,12 +33,12 @@ const Banner = () => {
           Globe !
         </p> */}
       </motion.div>
-      <div className="absolute bottom-16 inset-x-auto w-full mt-[18rem] sm:mt-36 flex justify-center px-2 ">
+      <div className="absolute bottom-16 inset-x-auto w-full mt-[18rem] sm:mt-36  px-2 ">
         <motion.button
           initial={{ opacity: 0, x: "-100vh" }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.6, duration: 0.4 }}
-          className="font-poppins rounded-l-full  bg-[#12405A] relative hover:scale-105 mx-2 overflow-hidden text-lg group text-white rounded-md inline-flex items-center justify-center space-x-4  py-3 border-4 border-white  min-w-[350px] px-4"
+          className="font-poppins  bg-[#12405A] mb-2 relative hover:scale-105 mx-2 overflow-hidden text-lg group text-white rounded-md inline-flex items-center justify-center space-x-4  py-3 border-4 border-white  min-w-[350px] px-4"
           onClick={scrollDown}
         >
           <p className="lg:z-10 ">LOGIN</p>
@@ -50,7 +50,7 @@ const Banner = () => {
           initial={{ opacity: 0, x: "-100vh" }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.9, duration: 0.4 }}
-          className="font-poppins rounded-r-full bg-[#12405A] relative mx-2  overflow-hidden text-lg group text-white rounded-md inline-flex items-center justify-center space-x-4  py-3 border-4 border-white  min-w-[350px] px-4"
+          className="font-poppins  bg-[#12405A] relative mx-2  overflow-hidden text-lg group text-white rounded-md inline-flex items-center justify-center space-x-4  py-3 border-4 border-white  min-w-[350px] px-4"
           onClick={scrollDown}
         >
           <p className="lg:z-10 ">GET STARTED</p>
