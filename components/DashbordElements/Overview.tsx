@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
+import DahbordHeader from "./DahbordHeader";
+
 import StatCard from "./StatCard";
 
 function Overview() {
@@ -14,9 +16,7 @@ function Overview() {
   return (
     <div>
       {/* Top section */}
-      <div>
-        <h1 className="text-2xl font-bold text-gray-600">Overview</h1>
-      </div>
+      <DahbordHeader />
       {/* End top section */}
       <div className="w-full mt-16 p-5 grid grid-cols-1  xl:grid-cols-3 gap-4 lg:gap-x-24 ">
         <StatCard title="Total number of suppliers" quantity={10} />
