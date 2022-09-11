@@ -1,13 +1,14 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import React, { useState } from "react";
-import StatCard from "../components/DashbordElements/StatCard";
-import DashbordSideBar from "../components/DashbordSideBar";
+
 import Image from "next/image";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import Overview from "../components/DashbordElements/Overview";
-import Footer from "../components/Footer";
+import DashbordSideBar from "../../components/DashbordSideBar";
+import Overview from "../../components/DashbordElements/Overview";
+import Footer from "../../components/Footer";
+
 const Suppliers: NextPage = () => {
   return (
     <>
