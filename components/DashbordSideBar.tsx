@@ -81,14 +81,14 @@ function DashbordSideBar() {
           >
             <p>Find supplier</p>
           </div>
-          <div className="sidebar-element">
-            <p>Generate SPN data</p>
+          <div
+            className="sidebar-element"
+            onClick={() => router.push("/dashbord/spn")}
+          >
+            <p>Search spn </p>
           </div>
           <div className="sidebar-element">
             <p>Find the supplier</p>
-          </div>
-          <div className="sidebar-element">
-            <p>Live SPN data search</p>
           </div>
         </motion.div>
       </div>
