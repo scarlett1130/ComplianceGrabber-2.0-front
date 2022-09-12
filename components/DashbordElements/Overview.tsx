@@ -19,9 +19,13 @@ function Overview() {
       <DahbordHeader />
       {/* End top section */}
       <div className="w-full mt-16 p-5 grid grid-cols-1  xl:grid-cols-3 gap-4 lg:gap-x-24 ">
-        <StatCard title="Total number of suppliers" quantity={10} />
-        <StatCard title="Manufacturers" quantity={7} />
-        <StatCard title="Distributers" quantity={3} />
+        <StatCard
+          title="Total number of suppliers"
+          quantity={10}
+          src="stats.png"
+        />
+        <StatCard title="Manufacturers" quantity={7} src="truck.png" />
+        <StatCard title="Distributers" quantity={3} src="plane.png" />
       </div>
       <div className="w-full px-4 mt-16">
         <Carousel
