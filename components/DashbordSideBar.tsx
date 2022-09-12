@@ -2,8 +2,10 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
+import { useRouter } from "next/router";
 function DashbordSideBar() {
   const [showSidebar, setshowSidebar] = useState(true);
+  const router = useRouter();
   return (
     <div
       className={`flex md:block bg-gray-200 ${
@@ -67,11 +69,17 @@ function DashbordSideBar() {
           }}
           transition={{ duration: 0.4 }}
         >
-          <div className="sidebar-element">
+          <div
+            className="sidebar-element"
+            onClick={() => router.push("/dashbord")}
+          >
             <p>Overview</p>
           </div>
-          <div className="sidebar-element">
-            <p>Type of supplier</p>
+          <div
+            className="sidebar-element"
+            onClick={() => router.push("/dashbord/findsupplier")}
+          >
+            <p>Find supplier</p>
           </div>
           <div className="sidebar-element">
             <p>Generate SPN data</p>

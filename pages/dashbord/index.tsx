@@ -12,7 +12,7 @@ import Footer from "../../components/Footer";
 const Suppliers: NextPage = () => {
   return (
     <>
-      <div className="relative flex ">
+      <div className="relative flex overflow-hidden">
         <DashbordSideBar />
 
         <div className="p-5 w-full bg-gray-100 ">
