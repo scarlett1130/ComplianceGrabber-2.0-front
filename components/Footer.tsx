@@ -27,7 +27,7 @@ function Footer() {
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <motion.div
                 animate={{
-                  x: inView ? "0" : -200,
+                  y: inView ? "0" : 200,
                   opacity: inView ? "1" : "0",
                 }}
                 transition={{ duration: 0.4 }}

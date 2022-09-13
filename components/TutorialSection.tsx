@@ -48,7 +48,7 @@ function TutorialSection() {
         <motion.div
           className={`rounded-xl overflow-hidden min-h-[500px]`}
           animate={{
-            y: inView ? "0" : Appeared ? 0 : 300,
+            x: inView ? "0" : Appeared ? 0 : 300,
             opacity: inView ? "1" : "0",
           }}
           transition={{ duration: 0.5 }}

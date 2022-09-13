@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/router";
+import Image from "next/image";
 function DashbordSideBar() {
   const [showSidebar, setshowSidebar] = useState(true);
   const router = useRouter();
@@ -51,15 +52,18 @@ function DashbordSideBar() {
         </button>
         <Link href="/">
           <a>
-            <motion.h1
+            <motion.div
+              className="flex items-start flex-col"
               animate={{
                 y: showSidebar ? "0" : -200,
               }}
               transition={{ duration: 0.4 }}
-              className="font-bold text-xl text-gray-200 py-4 text-center"
             >
-              Compliance Grabber 2.0
-            </motion.h1>
+              <Image src="/logo.png" width="70" height="60" />
+              <p className="text-lg  text-white text-center mb-4">
+                ComplianceGrabber 2.0
+              </p>
+            </motion.div>
           </a>
         </Link>
         <motion.div
