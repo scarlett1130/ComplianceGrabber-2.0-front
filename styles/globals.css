@@ -10,6 +10,7 @@
   transition: 0.25s;
   }
 
+
   .sidebar-element{
     @apply py-4 px-2 my-2 font-poppins text-lg text-gray-200 w-full cursor-pointer hover:bg-gray-400 rounded-md smooth-transition
   }

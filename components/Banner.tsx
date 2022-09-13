@@ -1,9 +1,16 @@
 import Image from "next/image";
-import React from "react";
-import { ArrowRightCircleIcon } from "@heroicons/react/20/solid";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
+import LoginModal from "./LoginModal";
 
 const Banner = () => {
+  const [isOpen, setisOpen] = useState(false);
+  function openModal() {
+    setisOpen(true);
+  }
+  function closeModal() {
+    setisOpen(false);
+  }
   const scrollDown = () => {
     window.scrollTo({ top: 1150, behavior: "smooth" });
   };
@@ -23,9 +30,14 @@ const Banner = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-4xl font-poppins tracking-tight mt-16 sm:mt-2  text-white sm:text-5xl lg:text-6xl pb-4">
+        <h1 className="text-4xl font-poppins tracking-tight  mt-16 sm:mt-2  text-white sm:text-5xl lg:text-6xl pb-4">
           ComplianceGrabber 2.0
         </h1>
+        <LoginModal
+          isOpen={isOpen}
+          openModal={openModal}
+          closeModal={closeModal}
+        />
         {/* <p className="mt-6 hidden sm:block text-xl text-white font-poppins text-center leading-10">
           You’re digital tool to get all you need in one place and from all the
           best suppliers,we strive to make all the product details available for
@@ -40,7 +52,7 @@ const Banner = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.6, duration: 0.4 }}
             className="font-poppins  relative  mx-2 overflow-hidden shadow-sm shadow-green-600 hover:bg-gray-400  smooth-transition text-lg group text-white rounded-md inline-flex items-center justify-center space-x-4  py-3 border border-white  min-w-[350px] px-6"
-            onClick={scrollDown}
+            onClick={openModal}
           >
             <p className="lg:z-10 ">LOGIN</p>
           </motion.button>

@@ -27,7 +27,7 @@ function Overview() {
         <StatCard title="Manufacturers" quantity={7} src="truck.png" />
         <StatCard title="Distributers" quantity={3} src="plane.png" />
       </div>
-      <div className="w-full px-4 mt-16">
+      <div className="flex justify-center px-4 mt-16">
         <Carousel
           infiniteLoop
           autoPlay
@@ -38,13 +38,8 @@ function Overview() {
           showStatus={false}
         >
           {Suppliers_LOGOS.map((logo, i) => (
-            <div className="w-full h-[550px]" key={i}>
-              <Image
-                src={`/${logo}`}
-                layout="fill"
-                alt={logo}
-                className="object-center"
-              />
+            <div className="w-1/3 h-[550px]" key={i}>
+              <img src={`/${logo}`} alt={logo} />
             </div>
           ))}
         </Carousel>
