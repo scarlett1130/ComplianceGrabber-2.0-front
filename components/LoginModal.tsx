@@ -43,11 +43,11 @@ function LoginModal({ openModal, closeModal, isOpen }: modalProps) {
                     className="text-2xl   text-center font-poppins leading-6 text-gray-900"
                   >
                     <div className="flex justify-center items-center flex-col">
-                      <Image src="/logo.png" width="150" height="150" />
+                      <Image src="/logo.png" width="90" height="90" />
                       <p className="text-xl  text-gray-600 mb-4">
                         ComplianceGrabber 2.0
                       </p>
-                      <p className=" font-semibold tracking-wider mb-1">
+                      <p className=" font-semibold text-lg tracking-wider mb-1">
                         Log in to ComplianceGrabber 2.0
                       </p>
                       <p className="text-sm font-medium text-gray-500 tracking-tight">
@@ -90,7 +90,7 @@ function LoginModal({ openModal, closeModal, isOpen }: modalProps) {
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex w-full bg-blue-700 justify-center rounded-lg text-white border border-transparent px-4 py-3 text-lg font-poppins   focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="inline-flex w-full bg-blue-700 justify-center rounded-lg text-white border border-transparent  py-2 text-sm font-poppins   focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
                       Login
