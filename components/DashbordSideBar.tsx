@@ -53,7 +53,7 @@ function DashbordSideBar() {
         <Link href="/">
           <a>
             <motion.div
-              className="flex items-start flex-col"
+              className="flex items-center justify-center flex-col"
               animate={{
                 y: showSidebar ? "0" : -200,
               }}
