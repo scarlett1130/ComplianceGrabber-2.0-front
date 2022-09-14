@@ -15,7 +15,7 @@ function DashbordSideBar() {
           : ""
       } justify-center items-center smooth-tranisiton md:sidebar-color min-h-screen px-2  lg:min-w-[200px] md:px-4 py-4`}
     >
-      <div className={`${showSidebar ? "block" : "hidden md:block "}`}>
+      <div className={`${showSidebar ? "block" : "hidden "}`}>
         <button
           onClick={() => setshowSidebar(!showSidebar)}
           className={`relative w-full justify-items-end  ${

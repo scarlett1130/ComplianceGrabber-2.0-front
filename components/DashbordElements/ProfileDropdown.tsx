@@ -12,7 +12,7 @@ function ProfileDropdown() {
     <>
       <Menu as="div" className="relative ml-3">
         <div>
-          <Menu.Button className="flex max-w-xs items-center rounded-full smooth-transition bg-gray-200 text-sm  lg:rounded-md lg:p-2 lg:hover:bg-gray-50">
+          <Menu.Button className="flex max-w-xs items-center rounded-full smooth-transition  text-sm  lg:rounded-md lg:p-2 ">
             <img
               className="h-8 w-8 rounded-full"
               src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
