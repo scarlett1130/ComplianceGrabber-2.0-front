@@ -28,7 +28,7 @@ function Overview() {
         <StatCard title="Manufacturers" quantity={7} src="manufCard.png" />
         <StatCard title="Distributers" quantity={3} src="distributerCard.png" />
       </div>
-      <div className="lg:flex mt-6 p-5">
+      <div className="lg:flex mt-4 p-5">
         <div className="w-full">
           {/* Map component */}
           <div className="relative rounded-lg bg-white flex justify-end  min-h-[500px] p-5">
