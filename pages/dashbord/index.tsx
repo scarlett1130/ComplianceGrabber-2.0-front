@@ -15,7 +15,7 @@ const Suppliers: NextPage = () => {
       <div className="relative flex overflow-hidden">
         <DashbordSideBar />
 
-        <div className="p-5 w-full bg-gray-100 ">
+        <div className="p-5 minh-screen w-full bg-gray-100  ">
           <Overview />
         </div>
       </div>

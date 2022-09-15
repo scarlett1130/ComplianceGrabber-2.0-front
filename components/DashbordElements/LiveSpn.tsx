@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import DahbordHeader from "./DahbordHeader";
-
+import suppliersList from "../../utils/suppliers";
 function LiveSpn() {
   const router = useRouter();
   return (
@@ -38,23 +38,25 @@ function LiveSpn() {
         </button>
         <div className="flex mt-6 space-x-7">
           <select
-            name="cars"
-            className="w-[44%] bg-gray-200 outline-none border-0 rounded-lg py-4 text-lg font-poppins cursor-pointer"
+            name="Type of supplier"
+            className="w-full  my-2 smooth-transition min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0"
           >
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+            <option value="">Type of supplier</option>
+
+            <option value="Manufacturer">Manufacturer</option>
+            <option value="Distributer">Distributer</option>
           </select>
 
           <select
-            name="cars"
-            className="w-[44%] bg-gray-200 outline-none border-0 rounded-lg py-4 text-lg font-poppins cursor-pointer"
+            name="Type of supplier"
+            className="w-full mx-5 my-2 smooth-transition min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0"
           >
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+            <option value="">Select supplier</option>
+            {suppliersList.manufacturers.map((manufacturer, i) => (
+              <option key={i} value="Manufacturer">
+                {manufacturer}
+              </option>
+            ))}
           </select>
         </div>
         <div className="flex space-x-9 mt-7">

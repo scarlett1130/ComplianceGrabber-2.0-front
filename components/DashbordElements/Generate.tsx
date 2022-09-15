@@ -3,7 +3,7 @@ import DahbordHeader from "./DahbordHeader";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Stepper from "./Stepper";
-
+import suppliersList from "../../utils/suppliers";
 function Generate() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [step, setstep] = useState(1);
