@@ -22,7 +22,7 @@ function step4({ nextStep }: stepProps) {
             fill="white"
           />
         </svg>
-        <p>Download</p>
+        <p> Export Completed template</p>
       </button>
     </div>
   );
