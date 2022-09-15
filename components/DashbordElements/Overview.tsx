@@ -17,7 +17,7 @@ function Overview() {
   return (
     <div>
       {/* Top section */}
-      <DahbordHeader />
+      <DahbordHeader title="Overview" />
       {/* End top section */}
       <div className="w-full mt-16 p-5 grid grid-cols-1  md:grid-cols-3 gap-4 gaps-x-4 xl:gap-x-24 ">
         <StatCard

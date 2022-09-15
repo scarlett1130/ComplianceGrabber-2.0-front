@@ -1,17 +1,19 @@
-import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
+import Generate from "../../components/DashbordElements/Generate";
+import Step1 from "../../components/DashbordElements/Step1";
+import Stepper from "../../components/DashbordElements/Stepper";
 import DashbordSideBar from "../../components/DashbordSideBar";
 import Footer from "../../components/Footer";
-import { motion } from "framer-motion";
-import FindSupplier from "../../components/DashbordElements/FindSupplier";
-function Findsupplier() {
+
+function generate() {
   return (
     <>
       <div className="relative flex overflow-hidden">
         <DashbordSideBar />
 
         <div className="p-5 w-full bg-gray-100 ">
-          <FindSupplier />
+          <Generate />
+         
         </div>
       </div>
       <Footer />
@@ -19,4 +21,4 @@ function Findsupplier() {
   );
 }
 
-export default Findsupplier;
+export default generate;
