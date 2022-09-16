@@ -25,7 +25,7 @@ function Generate() {
         ) : step == 3 ? (
           <Step3 nextStep={NextStep} />
         ) : (
-          <Step4 nextStep={NextStep} />
+          <Step4 />
         )}
       </div>
     </div>
