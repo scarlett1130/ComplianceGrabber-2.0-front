@@ -7,7 +7,7 @@ function Stepper({ step }: StepperProps) {
   return (
     <>
       <div className="grid grid-cols-4 cursor-pointer bg-gray-200 py-3 rounded-lg px-4">
-        <div className="flex items-center   space-x-4" >
+        <div className="flex items-center   space-x-4">
           <div className="text-white font-poppins rounded-full flex  justify-center items-center sidebar-color w-9 h-9">
             <p className="text-lg font-semibold">1</p>
           </div>
@@ -48,7 +48,7 @@ function Stepper({ step }: StepperProps) {
               step >= 3 ? "text-[#1D627B]" : "text-gray-500"
             } text-lg font-poppins`}
           >
-            Select A Distributer
+            Select A Supplier
           </p>
         </div>
         <div className="flex items-center   space-x-4">

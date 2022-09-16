@@ -11,7 +11,7 @@ function Generate() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const [step, setstep] = useState(1);
   function NextStep() {
-   setstep(step+1);
+    setstep(step + 1);
   }
   return (
     <div className="">

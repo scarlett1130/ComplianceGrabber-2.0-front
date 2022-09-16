@@ -4,20 +4,16 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 function Footer() {
-  const navigation = {
-    solutions: [
-      { name: "Marketing", href: "#" },
-      { name: "Analytics", href: "#" },
-      { name: "Commerce", href: "#" },
-      { name: "Insights", href: "#" },
-    ],
-  };
   const { ref, inView, entry } = useInView({
     /* Optional options */
     threshold: 0,
   });
   return (
-    <footer className="bg-gray-800" aria-labelledby="footer-heading" ref={ref}>
+    <footer
+      className="bottom-0 bg-gray-800 "
+      aria-labelledby="footer-heading"
+      ref={ref}
+    >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>

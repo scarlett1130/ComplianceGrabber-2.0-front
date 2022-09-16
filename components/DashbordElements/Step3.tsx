@@ -1,9 +1,28 @@
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { useState } from "react";
 import suppliersList from "../../utils/suppliers";
+import { useAppSelector, useAppDispatch } from "../../Redux/hooks";
+import { setSupplier, setSupplierType } from "../../Redux/Slices/StepperSlice";
 interface stepProps {
   nextStep: () => void;
 }
 function step3({ nextStep }: stepProps) {
+  const [value, setvalue] = useState("");
+  const dispatch = useAppDispatch();
+
+  const AddSupplierToRedux = (supplier: string) => {
+    dispatch(setSupplier(supplier));
+  };
+
+  const AddSupplierTypeToRedux = (type: string) => {
+    dispatch(setSupplierType(type));
+  };
+
+  function AddSupplierInfo(type: string, supplier: string) {
+    AddSupplierTypeToRedux(type);
+    AddSupplierToRedux(supplier);
+  }
+
   return (
     <>
       <div className="bg-gray-200 rounded-lg space-y-3 px-5 py-24 mt-9 ">
@@ -15,10 +34,11 @@ function step3({ nextStep }: stepProps) {
             <select
               name="Type of supplier"
               className="w-full  mt-12 smooth-transition min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0"
+              onChange={(e) => AddSupplierInfo("manufacturer", e.target.value)}
             >
               <option value="">Select supplier</option>
               {suppliersList.manufacturers.map((manufacturer, i) => (
-                <option key={i} value="Manufacturer">
+                <option key={i} value={manufacturer}>
                   {manufacturer}
                 </option>
               ))}
@@ -26,16 +46,17 @@ function step3({ nextStep }: stepProps) {
           </div>
           <div className="rounded-lg bg-gray-300  px-5 py-9  ">
             <h1 className="text-2xl text-center font-poppins text-[#225373] ">
-              Distrubuter
+              Distributer
             </h1>
             <select
               name="Type of supplier"
               className="w-full mt-12  smooth-transition min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0"
+              onChange={(e) => AddSupplierInfo("distributer", e.target.value)}
             >
               <option value="">Select supplier</option>
-              {suppliersList.distributers.map((manufacturer, i) => (
-                <option key={i} value="Manufacturer">
-                  {manufacturer}
+              {suppliersList.distributers.map((distributer, i) => (
+                <option key={i} value={distributer}>
+                  {distributer}
                 </option>
               ))}
             </select>

@@ -25,12 +25,19 @@ function Step1({ nextStep }: stepProps) {
         </svg>
 
         <p>template</p>
-        <button className="sidebar-color text-white  font-poppins px-9 py-3 rounded-lg ">
+        <a
+          href="/template.xlsx"
+          download="template"
+          className="sidebar-color text-white  font-poppins px-9 py-3 rounded-lg "
+        >
           Download Template
-        </button>
+        </a>
       </div>
       <div className="flex justify-center items-center mt-7">
-        <button className="border border-gray-400 rounded-lg text-gray-400 font-poppins text-lg px-16 py-2 " onClick={nextStep}>
+        <button
+          className="border border-gray-400 rounded-lg text-gray-400 font-poppins text-lg px-16 py-2 "
+          onClick={nextStep}
+        >
           Skip
         </button>
       </div>

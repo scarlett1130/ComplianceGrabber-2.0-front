@@ -1,12 +1,51 @@
-import React from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { useState } from "react";
+import { useAppSelector, useAppDispatch } from "../../Redux/hooks";
+import {
+  setSupplier,
+  setSupplierType,
+  SelectPartnumbers,
+  SelectSupplier,
+  selectSupplierType,
+} from "../../Redux/Slices/StepperSlice";
+import GetLiveData from "../../utils/GetLiveData";
+import Loader from "./Loader";
 
-interface stepProps {
-  nextStep: () => void;
-}
-function step4({ nextStep }: stepProps) {
+function step4() {
+  const dispatch = useAppDispatch();
+  const partnumbers: string[] = useAppSelector(SelectPartnumbers);
+  const supplierType: string = useAppSelector(selectSupplierType);
+  const supplier: string = useAppSelector(SelectSupplier);
+  const [Loading, setLoading] = useState(false);
+  async function Generate() {
+    setLoading(true);
+    const response = await GetLiveData({
+      type: supplierType,
+      supplier,
+      partnumbers,
+    });
+    console.log("was it", response.LiveData);
+    setLoading(false);
+  }
+
   return (
     <div className="bg-gray-200 rounded-lg  flex flex-col justify-center items-center space-y-3 px-5 py-24 mt-9 ">
-      <p className="font medium text-lg text-blue-900">
+      {!Loading && (
+        <>
+          <p className="font-semibold text-sm text-black">
+            Click to start generating a filled template
+          </p>
+          <button
+            className="bg-gray-400 flex items-center space-x-7 text-white rounded-md font-poppins text-2xl px-16 py-2"
+            onClick={Generate}
+          >
+            <p> Start Generating</p>
+          </button>{" "}
+        </>
+      )}
+      {Loading && <Loader />}
+
+      {/* <p className="font medium text-lg text-blue-900">
         Download the template{" "}
       </p>
       <button className="sidebar-color flex items-center space-x-7 text-white rounded-md font-poppins text-2xl px-16 py-2">
@@ -23,7 +62,7 @@ function step4({ nextStep }: stepProps) {
           />
         </svg>
         <p> Export Completed template</p>
-      </button>
+      </button> */}
     </div>
   );
 }

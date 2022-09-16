@@ -1,8 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
+import readXlsxFile from "read-excel-file";
+import Papa from "papaparse";
+import { useAppSelector, useAppDispatch } from "../../Redux/hooks";
+import { SetParnumbers } from "../../Redux/Slices/StepperSlice";
+
 interface stepProps {
   nextStep: () => void;
 }
+
 function Step2({ nextStep }: stepProps) {
+  const dispatch = useAppDispatch();
+
+  const AddPartnumbersToRedux = (partnumbers: string[]) => {
+    dispatch(SetParnumbers(partnumbers));
+  };
+  async function UploadTemplate(e: React.ChangeEvent<HTMLInputElement>) {
+    if (e === null) return;
+    try {
+      if (e?.target?.files[0].name.includes(".xlsx")) {
+        readXlsxFile(e?.target?.files[0]).then((rows) => {
+          AddPartnumbersToRedux(
+            rows
+              .splice(1)
+              .filter((row) => Number(row[0]) !== NaN && row[0] !== "")
+              .map((row) => `${row[0]}`)
+          );
+        });
+      } else {
+        Papa.parse(e?.target?.files[0], {
+          complete: ({ data }) => console.log(data[0]),
+        });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <>
       <div className="bg-gray-200 rounded-lg space-y-3 px-5 py-9 mt-9 border flex flex-col justify-center items-center  border-dashed border-gray-500">
@@ -23,13 +56,25 @@ function Step2({ nextStep }: stepProps) {
           />
         </svg>
 
-        <p>template</p>
-        <button className="sidebar-color text-white  font-poppins px-9 py-3 rounded-lg ">
-          Uploade File
-        </button>
+        <input
+          id="inputFile"
+          type="file"
+          accept={".csv,.xlsx"}
+          className="hidden"
+          onChange={(e) => UploadTemplate(e)}
+        />
+        <label
+          htmlFor="inputFile"
+          className={`flex   justify-center rounded-lg   cursor-pointer`}
+        >
+          <div className="sidebar-color text-white  font-poppins px-9 py-3 rounded-lg ">
+            Upload File
+          </div>
+        </label>
       </div>
       <div className="flex justify-center items-center mt-7">
         <button
+          disabled={false}
           className="border border-gray-400 rounded-lg text-gray-400 font-poppins text-lg px-16 py-2 "
           onClick={nextStep}
         >

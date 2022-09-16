@@ -18,6 +18,7 @@ export async function getLiveManufacturerData({
   supplier,
   partnumbers,
 }: liveDataProps) {
+  console.log(supplier, partnumbers);
   if (supplier == "Molex") {
     try {
       let rawData: any = [];
@@ -83,6 +84,7 @@ export async function getLiveManufacturerData({
     }
   }
 }
+
 export async function getLiveDistributersData({
   supplier,
   partnumbers,
@@ -174,5 +176,27 @@ export async function getLiveDistributersData({
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateTableData(rawData);
     return { csv_data, LiveData };
+  }
+}
+
+interface LiveDataProps {
+  type: string;
+  supplier: string;
+  partnumbers: string[];
+}
+
+export default async function GetLiveData({
+  type,
+  supplier,
+  partnumbers,
+}: LiveDataProps) {
+  if (type === "Manufacturer") {
+    console.log(type, supplier, partnumbers);
+    const response = await getLiveManufacturerData({ supplier, partnumbers });
+
+    return response;
+  } else {
+    const response = await getLiveDistributersData({ supplier, partnumbers });
+    return response;
   }
 }

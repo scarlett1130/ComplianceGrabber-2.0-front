@@ -1,9 +1,48 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
 import DahbordHeader from "./DahbordHeader";
 import suppliersList from "../../utils/suppliers";
+import GetLiveData from "../../utils/GetLiveData";
+import Loader from "./Loader";
+import DataTable from "./DataTable";
+
 function LiveSpn() {
   const router = useRouter();
+  const [supplier, setsupplier] = useState("");
+  const [type, settype] = useState("");
+  const [SearchInput, setSearchInput] = useState("");
+  const [Loading, setLoading] = useState(false);
+
+  const [Donloadable, setDonloadable] = useState<string | undefined>("");
+  const [LiveData, setLiveData] = useState<any>("");
+
+  function log(input: string) {
+    console.log(input);
+  }
+
+  async function SearchLiveData() {
+    if (!SearchInput || !type || !supplier) return;
+
+    try {
+      setLoading(true);
+      setLiveData(null);
+      const partnumbers = SearchInput.split(",");
+
+      const response = await GetLiveData({
+        type,
+        supplier,
+        partnumbers,
+      });
+
+      setDonloadable(response?.csv_data || "");
+      setLiveData(response?.LiveData || "");
+      log(LiveData.body);
+      setLoading(false);
+    } catch (e) {
+      log(`${e}`);
+      setLoading(false);
+    }
+  }
   return (
     <div>
       <DahbordHeader title="Live Spn Data" />
@@ -38,6 +77,7 @@ function LiveSpn() {
         </button>
         <div className="flex mt-6 space-x-7">
           <select
+            onChange={(e) => settype(e.target.value)}
             name="Type of supplier"
             className="w-full  my-2 smooth-transition min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0"
           >
@@ -48,27 +88,42 @@ function LiveSpn() {
           </select>
 
           <select
-            name="Type of supplier"
+            onChange={(e) => {
+              setsupplier(e.target.value);
+            }}
+            name="supplier"
             className="w-full mx-5 my-2 smooth-transition min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0"
           >
             <option value="">Select supplier</option>
-            {suppliersList.manufacturers.map((manufacturer, i) => (
-              <option key={i} value="Manufacturer">
-                {manufacturer}
-              </option>
-            ))}
+            {type == "Manufacturer"
+              ? suppliersList.manufacturers.map((manufacturer, i) => (
+                  <option key={i} value={manufacturer}>
+                    {manufacturer}
+                  </option>
+                ))
+              : suppliersList.distributers.map((distributer, i) => (
+                  <option key={i} value={distributer}>
+                    {distributer}
+                  </option>
+                ))}
           </select>
         </div>
         <div className="flex space-x-9 mt-7">
           <input
+            onChange={(e) => setSearchInput(e.target.value)}
             placeholder="Enter SPN Number"
             className="bg-white outline-0 text-[#0E8D90] font-poppins text-lg w-full p-3 rounded-md"
           />
-          <button className="sidebar-color py-3 px-14 rounded-lg text-white font-poppins text-lg">
+          <button
+            className="sidebar-color py-3 px-14 rounded-lg text-white font-poppins text-lg"
+            onClick={SearchLiveData}
+          >
             Search
           </button>
         </div>
+        {Loading && <Loader />}
       </div>
+      {/* <DataTable /> */}
     </div>
   );
 }
