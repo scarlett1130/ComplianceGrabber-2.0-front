@@ -19,13 +19,17 @@ function step4() {
   const [Loading, setLoading] = useState(false);
   async function Generate() {
     setLoading(true);
-    const response = await GetLiveData({
-      type: supplierType,
-      supplier,
-      partnumbers,
-    });
-    console.log("was it", response.LiveData);
-    setLoading(false);
+    try {
+      const response = await GetLiveData({
+        type: supplierType,
+        supplier,
+        partnumbers,
+      });
+      console.log("was it", response.LiveData);
+      setLoading(false);
+    } catch {
+      setLoading(false);
+    }
   }
 
   return (
