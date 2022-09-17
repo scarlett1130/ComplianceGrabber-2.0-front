@@ -19,6 +19,7 @@ const Suppliers: NextPage = () => {
           <Overview />
         </div>
       </div>
+
       <Footer />
     </>
   );

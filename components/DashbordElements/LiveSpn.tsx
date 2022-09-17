@@ -123,7 +123,7 @@ function LiveSpn() {
         </div>
         {Loading && <Loader />}
       </div>
-      {/* <DataTable /> */}
+      {LiveData && <DataTable head={LiveData?.head} body={LiveData?.body} />}
     </div>
   );
 }
