@@ -49,7 +49,7 @@ function step4() {
       )}
       {Loading && <Loader />}
 
-      {/* <p className="font medium text-lg text-blue-900">
+      <p className="font medium text-lg text-blue-900">
         Download the template{" "}
       </p>
       <button className="sidebar-color flex items-center space-x-7 text-white rounded-md font-poppins text-2xl px-16 py-2">
@@ -66,7 +66,7 @@ function step4() {
           />
         </svg>
         <p> Export Completed template</p>
-      </button> */}
+      </button>
     </div>
   );
 }
