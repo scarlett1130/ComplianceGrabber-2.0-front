@@ -26,7 +26,7 @@ function Step1({ nextStep }: stepProps) {
 
         <p>template</p>
         <a
-          href="/template.xlsx"
+          href="/Template.xlsx"
           download="template"
           className="sidebar-color text-white  font-poppins px-9 py-3 rounded-lg "
         >
