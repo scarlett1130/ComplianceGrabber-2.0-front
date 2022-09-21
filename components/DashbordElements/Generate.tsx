@@ -13,11 +13,15 @@ function Generate() {
   function NextStep() {
     setstep(step + 1);
   }
+  function HandleStep(value:number){
+        if(value>step) return
+        setstep(value);
+  }
   return (
     <div className="">
       <DahbordHeader title="Generate Data" />
       <div className="mt-9">
-        <Stepper step={step} />
+        <Stepper step={step} HandleStep={HandleStep} />
         {step == 1 ? (
           <Step1 nextStep={NextStep} />
         ) : step == 2 ? (
