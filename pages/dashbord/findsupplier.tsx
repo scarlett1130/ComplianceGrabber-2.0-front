@@ -4,7 +4,9 @@ import DashbordSideBar from "../../components/DashbordSideBar";
 import Footer from "../../components/Footer";
 import { motion } from "framer-motion";
 import FindSupplier from "../../components/DashbordElements/FindSupplier";
+
 function Findsupplier() {
+  
   return (
     <>
       <div className="relative flex overflow-hidden">

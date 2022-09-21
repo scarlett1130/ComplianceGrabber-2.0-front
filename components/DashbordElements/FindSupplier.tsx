@@ -1,9 +1,19 @@
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useState } from "react";
+import SearchForSupplier from "../../utils/FindSuppliers";
 import DahbordHeader from "./DahbordHeader";
 
 function FindSupplier() {
   const router = useRouter();
+  const [suppliers, setSuppliers] = useState([]);
+  const [Partnumber, setPartnumber] = useState("");
+  const [Loading, setLoading] = useState(false);
+  async function SearchAllSupplier() {
+    setLoading(true);
+    const found_suppliers = await SearchForSupplier(Partnumber);
+    setSuppliers(found_suppliers);
+    setLoading(false);
+  }
   return (
     <div>
       <DahbordHeader title="Find The Supplier" />
@@ -40,10 +50,21 @@ function FindSupplier() {
           <input
             placeholder="Enter SPN Number"
             className="bg-white outline-0 text-[#0E8D90] font-poppins text-lg w-full p-3 rounded-md"
+            onChange={(e) => setPartnumber(e.target.value)}
           />
-          <button className="sidebar-color py-3 px-14 rounded-lg text-white font-poppins text-lg">
+          <button
+            className="sidebar-color py-3 px-14 rounded-lg text-white font-poppins text-lg"
+            onClick={SearchAllSupplier}
+          >
             Search
           </button>
+        </div>
+
+        <div>
+          {Loading && <p>Loading...</p>}
+          {suppliers?.map((supplier, i) => (
+            <p key={i}>{supplier}</p>
+          ))}
         </div>
       </div>
     </div>

@@ -18,7 +18,6 @@ export async function getLiveManufacturerData({
   supplier,
   partnumbers,
 }: liveDataProps) {
-  console.log(supplier, partnumbers);
   if (supplier == "Molex") {
     try {
       let rawData: any = [];
@@ -191,7 +190,6 @@ export default async function GetLiveData({
   partnumbers,
 }: LiveDataProps) {
   if (type === "Manufacturer") {
-    console.log(type, supplier, partnumbers);
     const response = await getLiveManufacturerData({ supplier, partnumbers });
 
     return response;
