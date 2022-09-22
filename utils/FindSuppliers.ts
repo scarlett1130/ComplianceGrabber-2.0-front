@@ -34,17 +34,15 @@ const suppliersList = [
 async function getLiveSupplier(supplier: string, partnumber: string) {
   if (supplier == "Molex") {
     try {
-      let rawData: any = [];
-      try {
-        const response = await axios.get(
-          `https://fastapi0013.herokuapp.com/molex/${partnumber}`
-        );
-        if (response?.data?.mpn == !"not found") {
-          return "molex";
-        }
-      } catch (e) {}
-    } catch (error) {
-      throw new Error(`${error}`);
+      const response = await axios.get(
+        `https://fastapi0013.herokuapp.com/molex/${partnumber}`
+      );
+      if (response?.data?.mpn == !"not found") {
+        return "molex";
+      }
+      return;
+    } catch (e) {
+      return;
     }
   } else if (supplier == "Wago") {
     try {
@@ -54,8 +52,10 @@ async function getLiveSupplier(supplier: string, partnumber: string) {
       if (response.data.PartName !== "not found") {
         return "wago";
       }
+      return;
     } catch (error) {
       throw new Error(`${error}`);
+      return;
     }
   } else if (supplier == "Te") {
     try {
@@ -65,8 +65,10 @@ async function getLiveSupplier(supplier: string, partnumber: string) {
       if (response?.data.tcpn !== "not found") {
         return "Te";
       }
+      return;
     } catch (error) {
       throw new Error(`${error}`);
+      return;
     }
   } else if (supplier == "Mouser") {
     try {
@@ -75,40 +77,69 @@ async function getLiveSupplier(supplier: string, partnumber: string) {
       if (response && response?.data?.status != "not found") {
         return "Mouser";
       }
+      return;
+    } catch (error) {
+      throw new Error(`${error}`);
+      return;
+    }
+  } else if (supplier == "Digikey") {
+    try {
+      const response = await fetchDigiKey(partnumber);
+      if (response && response?.status != "not found") {
+        return "Digikey";
+      }
+      return;
+    } catch (error) {
+      throw new Error(`${error}`);
+      return;
+    }
+  } else if (supplier == "Phoenix") {
+    try {
+      const response = await axios.get(
+        `https://fastapi0013.herokuapp.com/phoenix/${partnumber}`
+      );
+      if (response?.data.results.status === 200) {
+        return "Phoenix";
+      }
+      return;
+    } catch (error) {
+      throw new Error(`${error}`);
+      return;
+    }
+  } else if (supplier == "Maxim") {
+    try {
+      const response = await axios.get(
+        `https://fastapi0013.herokuapp.com/maxim/${partnumber}`
+      );
+      if (response?.data.Rohs_Compliance !== "not found") {
+        return "Maxim";
+      }
+    } catch (error) {
+      throw new Error(`${error}`);
+      return;
+    }
+  } else if (supplier == "Rs-components") {
+    try {
+      const response = await axios.get(
+        `https://fastapi0013.herokuapp.com/rscomponents/${partnumber}`
+      );
+      if (response?.data.mpn !== "not found") {
+        return "Rs-components";
+      }
     } catch (error) {
       throw new Error(`${error}`);
     }
-  } else if (supplier == "Digikey") {
-    const response = await fetchDigiKey(partnumber);
-    if (response && response?.status != "not found") {
-      return "Digikey";
-    }
-  } else if (supplier == "Phoenix") {
-    const response = await axios.get(
-      `https://fastapi0013.herokuapp.com/phoenix/${partnumber}`
-    );
-    if (response?.data.results.status === 200) {
-      return "Phoenix";
-    }
-  } else if (supplier == "Maxim") {
-    const response = await axios.get(
-      `https://fastapi0013.herokuapp.com/maxim/${partnumber}`
-    );
-    if (response?.data.Rohs_Compliance !== "not found") {
-      return "Maxim";
-    }
-  } else if (supplier == "Rs-components") {
-    const response = await axios.get(
-      `https://fastapi0013.herokuapp.com/rscomponents/${partnumber}`
-    );
-    if (response?.data.mpn !== "not found") {
-      return "Rs-components";
-    }
   } else if (supplier == "Future Electronics") {
-    const response = await fetchFutureElectronics(partnumber);
+    try {
+      const response = await fetchFutureElectronics(partnumber);
 
-    if (response && response[0]?.status !== "not found") {
-      return "Future Electronics";
+      if (response && response[0]?.status !== "not found") {
+        return "Future Electronics";
+      }
+      return;
+    } catch (error) {
+      throw new Error(`${error}`);
+      return;
     }
   }
 }
@@ -118,8 +149,10 @@ async function SearchForSupplier(partnumber: string) {
   await Promise.all(
     suppliersList.map(async (supplier) => {
       try {
-        const found_supplier = await getLiveSupplier(supplier, partnumber);
-        suppliers.push(found_supplier);
+        const response = await getLiveSupplier(supplier, partnumber);
+        if (response !== undefined) {
+          suppliers.push(response);
+        }
       } catch (err) {}
     })
   );

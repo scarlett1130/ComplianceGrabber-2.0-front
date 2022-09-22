@@ -2,14 +2,18 @@
 import React, { useState } from "react";
 import suppliersList from "../../utils/suppliers";
 import { useAppSelector, useAppDispatch } from "../../Redux/hooks";
-import { setSupplier, setSupplierType } from "../../Redux/Slices/StepperSlice";
+import {
+  setSupplier,
+  setSupplierType,
+  selectSupplierType,
+} from "../../Redux/Slices/StepperSlice";
+
 interface stepProps {
   nextStep: () => void;
 }
 function step3({ nextStep }: stepProps) {
-  const [value, setvalue] = useState("");
   const dispatch = useAppDispatch();
-
+  const supplierType: string = useAppSelector(selectSupplierType);
   const AddSupplierToRedux = (supplier: string) => {
     dispatch(setSupplier(supplier));
   };
@@ -33,7 +37,9 @@ function step3({ nextStep }: stepProps) {
             </h1>
             <select
               name="Type of supplier"
-              className="w-full  mt-12 smooth-transition min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0"
+              className={`w-full  mt-12 smooth-transition ${
+                supplierType == "distributer" ? "opacity-60" : ""
+              } min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0`}
               onChange={(e) => AddSupplierInfo("manufacturer", e.target.value)}
             >
               <option value="">Select supplier</option>
@@ -50,7 +56,9 @@ function step3({ nextStep }: stepProps) {
             </h1>
             <select
               name="Type of supplier"
-              className="w-full mt-12  smooth-transition min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0"
+              className={`w-full mt-12  smooth-transition min-h-[50px] ${
+                supplierType == "manufacturer" ? "opacity-60" : ""
+              } rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0`}
               onChange={(e) => AddSupplierInfo("distributer", e.target.value)}
             >
               <option value="">Select supplier</option>
@@ -63,14 +71,16 @@ function step3({ nextStep }: stepProps) {
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center mt-7">
-        <button
-          className="border border-gray-400 rounded-lg text-gray-400 font-poppins text-lg px-16 py-2 "
-          onClick={nextStep}
-        >
-          Continue
-        </button>
-      </div>
+      {supplierType && (
+        <div className="flex justify-center items-center mt-7">
+          <button
+            className="border border-gray-400 sidebar-color rounded-lg text-white font-poppins text-lg px-16 py-2 "
+            onClick={nextStep}
+          >
+            Continue
+          </button>
+        </div>
+      )}
     </>
   );
 }

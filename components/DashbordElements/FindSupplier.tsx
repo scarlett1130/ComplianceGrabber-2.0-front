@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import SearchForSupplier from "../../utils/FindSuppliers";
 import DahbordHeader from "./DahbordHeader";
+import SupplierFoundCard from "./supllierSection/SupplierFoundCard";
 
 function FindSupplier() {
   const router = useRouter();
@@ -11,6 +12,7 @@ function FindSupplier() {
   async function SearchAllSupplier() {
     setLoading(true);
     const found_suppliers = await SearchForSupplier(Partnumber);
+    console.log(found_suppliers);
     setSuppliers(found_suppliers);
     setLoading(false);
   }
@@ -59,11 +61,15 @@ function FindSupplier() {
             Search
           </button>
         </div>
+        {Loading && <p>Loading...</p>}
 
-        <div>
-          {Loading && <p>Loading...</p>}
+        <div className="grid mt-16  grid-cols-1  md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-5 container mx-auto">
           {suppliers?.map((supplier, i) => (
-            <p key={i}>{supplier}</p>
+            <SupplierFoundCard
+              key={i}
+              supplierName={supplier}
+              LogoPath="/RS.png"
+            />
           ))}
         </div>
       </div>

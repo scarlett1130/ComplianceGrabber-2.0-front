@@ -14,6 +14,7 @@ function Step2({ nextStep }: stepProps) {
   const AddPartnumbersToRedux = (partnumbers: string[]) => {
     dispatch(SetParnumbers(partnumbers));
   };
+  const [isUploaded, setIsUploaded] = useState(false);
   async function UploadTemplate(e: React.ChangeEvent<HTMLInputElement>) {
     if (e === null) return;
     try {
@@ -31,6 +32,8 @@ function Step2({ nextStep }: stepProps) {
           complete: ({ data }) => console.log(data[0]),
         });
       }
+      console.log("FFFFF");
+      setIsUploaded(true);
     } catch (err) {
       console.error(err);
     }
@@ -67,20 +70,27 @@ function Step2({ nextStep }: stepProps) {
           htmlFor="inputFile"
           className={`flex   justify-center rounded-lg   cursor-pointer`}
         >
-          <div className="sidebar-color text-white  font-poppins px-9 py-3 rounded-lg ">
-            Upload File
+          <div
+            className={` ${
+              isUploaded ? "bg-green-600" : "sidebar-color"
+            } text-white  font-poppins px-9 py-3 rounded-lg `}
+          >
+            {isUploaded ? "Succesfully uploaded" : "Upload File"}
           </div>
         </label>
       </div>
-      <div className="flex justify-center items-center mt-7">
-        <button
-          disabled={false}
-          className="border border-gray-400 rounded-lg text-gray-400 font-poppins text-lg px-16 py-2 "
-          onClick={nextStep}
-        >
-          Continue
-        </button>
-      </div>
+      {isUploaded && (
+        <div className="flex justify-center items-center mt-7">
+          <button
+            disabled={false}
+            className={`border border-gray-400   sidebar-color text-white
+             rounded-lg  font-poppins text-lg px-16 py-2`}
+            onClick={nextStep}
+          >
+            Continue
+          </button>
+        </div>
+      )}
     </>
   );
 }
