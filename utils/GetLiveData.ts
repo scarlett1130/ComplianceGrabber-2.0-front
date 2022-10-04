@@ -173,7 +173,7 @@ export async function getLiveDistributersData({
       })
     );
     const csv_data = Papa.unparse(rawData);
-    const LiveData = generateDigiKeyTable(rawData);
+    const LiveData = generateTableData(rawData);
     return { csv_data, LiveData };
   } else if (supplier == "Phoenix") {
     let rawData: any[] = [];
