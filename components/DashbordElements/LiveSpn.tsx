@@ -13,7 +13,7 @@ function LiveSpn() {
   const [SearchInput, setSearchInput] = useState("");
   const [Loading, setLoading] = useState(false);
 
-  const [Donloadable, setDonloadable] = useState<string | undefined>("");
+  const [Downloadable, setDownloadable] = useState<string | undefined>("");
   const [LiveData, setLiveData] = useState<any>("");
 
   function log(input: string) {
@@ -22,7 +22,6 @@ function LiveSpn() {
 
   async function SearchLiveData() {
     if (!SearchInput || !type || !supplier) return;
-
     try {
       setLoading(true);
       setLiveData(null);
@@ -34,7 +33,7 @@ function LiveSpn() {
         partnumbers,
       });
 
-      setDonloadable(response?.csv_data || "");
+      setDownloadable(response?.csv_data || "");
       setLiveData(response?.LiveData || "");
       log(LiveData.body);
       setLoading(false);
@@ -108,6 +107,7 @@ function LiveSpn() {
                 ))}
           </select>
         </div>
+
         <div className="flex space-x-9 mt-7">
           <input
             onChange={(e) => setSearchInput(e.target.value)}
@@ -121,9 +121,14 @@ function LiveSpn() {
             Search
           </button>
         </div>
-        {Loading && <Loader />}
+        <div className="relative mt-16 min-h-[500px]">
+          {Loading && <Loader />}
+
+          {LiveData && (
+            <DataTable head={LiveData?.head} body={LiveData?.body} />
+          )}
+        </div>
       </div>
-      {LiveData && <DataTable head={LiveData?.head} body={LiveData?.body} />}
     </div>
   );
 }

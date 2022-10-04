@@ -39,6 +39,50 @@ export async function getLiveManufacturerData({
     } catch (error) {
       throw new Error(`${error}`);
     }
+  } else if (supplier.toLowerCase() == "onsemi") {
+    try {
+      let rawData: any = [];
+      await Promise.all(
+        partnumbers.map(async (keyword: string) => {
+          const response = await axios.get(
+            `https://fastapi0013.herokuapp.com/onsemi/${keyword}`
+          );
+
+          if (response) {
+            rawData = [...rawData, ...[response.data]];
+          }
+        })
+      );
+      const csv_data = Papa.unparse(rawData);
+
+      const LiveData = generateTableData(rawData);
+
+      return { csv_data, LiveData };
+    } catch (error) {
+      throw new Error(`${error}`);
+    }
+  } else if (supplier.toLowerCase() == "ormon") {
+    try {
+      let rawData: any = [];
+      await Promise.all(
+        partnumbers.map(async (keyword: string) => {
+          const response = await axios.get(
+            `https://fastapi0013.herokuapp.com/omron/${keyword}`
+          );
+
+          if (response) {
+            rawData = [...rawData, ...[response.data]];
+          }
+        })
+      );
+      const csv_data = Papa.unparse(rawData);
+
+      const LiveData = generateTableData(rawData);
+
+      return { csv_data, LiveData };
+    } catch (error) {
+      throw new Error(`${error}`);
+    }
   } else if (supplier == "Wago") {
     try {
       let rawData: any = [];
@@ -110,6 +154,21 @@ export async function getLiveDistributersData({
         const response = await fetchDigiKey(partnumber);
         if (response && response?.status != "not found") {
           rawData = [...rawData, ...response];
+        }
+      })
+    );
+    const csv_data = Papa.unparse(rawData);
+    const LiveData = generateDigiKeyTable(rawData);
+    return { csv_data, LiveData };
+  } else if (supplier.toLowerCase() == "arrow") {
+    let rawData: any[] = [];
+    await Promise.all(
+      partnumbers.map(async (partnumber) => {
+        const response = await axios.get(
+          `https://fastapi0013.herokuapp.com/arrow/${partnumber}`
+        );
+        if (response) {
+          rawData = [...rawData, ...[response.data]];
         }
       })
     );
@@ -189,7 +248,7 @@ export default async function GetLiveData({
   supplier,
   partnumbers,
 }: LiveDataProps) {
-  if (type === "Manufacturer") {
+  if (type.toLowerCase() === "manufacturer") {
     const response = await getLiveManufacturerData({ supplier, partnumbers });
 
     return response;

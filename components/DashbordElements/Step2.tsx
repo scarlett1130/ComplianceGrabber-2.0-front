@@ -32,7 +32,7 @@ function Step2({ nextStep }: stepProps) {
           complete: ({ data }) => console.log(data[0]),
         });
       }
-      console.log("FFFFF");
+
       setIsUploaded(true);
     } catch (err) {
       console.error(err);

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Generate from "../../components/DashbordElements/Generate";
-import Step1 from "../../components/DashbordElements/Step1";
-import Stepper from "../../components/DashbordElements/Stepper";
 import DashbordSideBar from "../../components/DashbordSideBar";
 import Footer from "../../components/Footer";
 

@@ -4,6 +4,7 @@ interface Supliers {
 }
 
 const manufacturers: string[] = [
+  "Ormon",
   "Onsemi",
   "Te",
   "Molex",
@@ -19,6 +20,7 @@ const manufacturers: string[] = [
 
 const distributers: string[] = [
   "Mouser",
+  "Arrow",
   "Anixter",
   "Digikey",
   "Ttiinc",

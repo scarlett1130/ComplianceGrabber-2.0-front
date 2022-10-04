@@ -1,9 +1,8 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import SearchForSupplier from "../../utils/FindSuppliers";
 import DahbordHeader from "./DahbordHeader";
 import SupplierFoundCard from "./supllierSection/SupplierFoundCard";
-
+import axios from "axios";
 function FindSupplier() {
   const router = useRouter();
   const [suppliers, setSuppliers] = useState([]);
@@ -11,9 +10,11 @@ function FindSupplier() {
   const [Loading, setLoading] = useState(false);
   async function SearchAllSupplier() {
     setLoading(true);
-    const found_suppliers = await SearchForSupplier(Partnumber);
-    console.log(found_suppliers);
-    setSuppliers(found_suppliers);
+    const response = await axios.get(
+      `https://fastapi0013.herokuapp.com/findsupplier/${Partnumber}`
+    );
+    console.log(response.data);
+    setSuppliers(response.data);
     setLoading(false);
   }
   return (

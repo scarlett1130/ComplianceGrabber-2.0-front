@@ -72,7 +72,7 @@ function step4() {
               onClick={() => Generate()}
             >
               <p> Fill document out </p>
-            </button>{" "}
+            </button>
           </>
         )
       )}

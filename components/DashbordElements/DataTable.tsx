@@ -32,7 +32,7 @@ export default function DataTable({
   };
 
   return (
-    <div className="mg-16 mt-5 table-shadow bdr-8 px-14">
+    <div className="mg-16 mt-5 table-shadow bdr-8 px-4">
       {body?.length != 0 && (
         <div className="w-full relative py-2 font-bold flex items-center justify-center">
           {Export !== null && (
@@ -55,13 +55,9 @@ export default function DataTable({
           fontSize: "small",
         }}
       >
-        <table
-          style={{ width: "100%" }}
-          className="relative rounded-lg overflow-hidden"
-        >
+        <table className="relative w-full rounded-lg overflow-hidden">
           <thead className="">
             <tr className="text-[16px] font-bold bg-gradient-to-t from-[#0ec4c1] to-[#3f7599]  text-gray-100 ">
-              <th className="p-5">Index</th>
               {head?.map((column: any) => (
                 <th key={"tbh_vw" + column} className="p-5 ">
                   {" "}
@@ -75,12 +71,9 @@ export default function DataTable({
               <tr
                 key={index + "tr"}
                 className={`rounded-xl text-lg ${
-                  index % 2 !== 0 ? "bg-[#bce7e7]" : "bg-gray-100"
+                  index % 2 !== 0 ? "bg-[#bce7e7]" : "bg-gray-200"
                 }`}
               >
-                <td style={{ textAlign: "center" }} className="py-3">
-                  {index + Start + 1}
-                </td>
                 {row?.map((cell: any, cell_index: any) => (
                   <td
                     key={cell_index + "td" + index}
@@ -95,30 +88,30 @@ export default function DataTable({
         </table>
       </div>
 
-      <div className="flex space-x-16 justify-center mt-5">
-        <button
-          className={`  py-3 px-5 rounded-xl cursor-pointer ${
-            Start === 0 || body?.length === 1
-              ? "bg-gray-100 disabled"
-              : "bg-gradient-to-t from-[#0ec4c1] to-[#3f7599]"
-          } `}
-          onClick={PreviousPage}
-        >
-          {" "}
-          back
-        </button>
-        <button
-          className={`  py-3 px-5 rounded-xl cursor-pointer ${
-            End === body?.length || body?.length < step
-              ? "bg-gray-100 disabled"
-              : "bg-gradient-to-t from-[#0ec4c1] to-[#3f7599]"
-          }`}
-          onClick={NextPage}
-        >
-          {" "}
-          next
-        </button>
-      </div>
+      {body.length > 10 && (
+        <div className="flex space-x-16 justify-center mt-5">
+          <button
+            className={`  py-3 px-5 font-semibold rounded-xl cursor-pointer ${
+              Start === 0 || body?.length === 1
+                ? "bg-gray-200 disabled"
+                : "bg-gradient-to-t from-[#0ec4c1] to-[#3f7599]"
+            } `}
+            onClick={PreviousPage}
+          >
+            {"<< back"}
+          </button>
+          <button
+            className={`  py-3 px-5 font-semibold rounded-xl cursor-pointer ${
+              End === body?.length || body?.length < step
+                ? "bg-gray-200 disabled"
+                : "bg-gradient-to-t from-[#0ec4c1] to-[#3f7599]"
+            }`}
+            onClick={NextPage}
+          >
+            {"next >>"}
+          </button>
+        </div>
+      )}
     </div>
   );
 }
