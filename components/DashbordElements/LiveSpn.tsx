@@ -4,7 +4,7 @@ import DahbordHeader from "./DahbordHeader";
 import suppliersList from "../../utils/suppliers";
 import GetLiveData from "../../utils/GetLiveData";
 import Loader from "./Loader";
-import DataTable from "./DataTable";
+import DataTable from "./DataTable2";
 
 function LiveSpn() {
   const router = useRouter();
@@ -13,7 +13,7 @@ function LiveSpn() {
   const [SearchInput, setSearchInput] = useState("");
   const [Loading, setLoading] = useState(false);
 
-  const [Downloadable, setDownloadable] = useState<string | undefined>("");
+
   const [LiveData, setLiveData] = useState<any>("");
 
   function log(input: string) {
@@ -32,14 +32,10 @@ function LiveSpn() {
         supplier,
         partnumbers,
       });
-
-      console.log(response?.LiveData);
-      setDownloadable(response?.csv_data || "");
       setLiveData(response?.LiveData || "");
-      log(LiveData.body);
+     
       setLoading(false);
     } catch (e) {
-      log(`${e}`);
       setLoading(false);
     }
   }
@@ -125,7 +121,7 @@ function LiveSpn() {
         <div className="relative mt-16 min-h-[500px]">
           {Loading && <Loader />}
 
-          {LiveData.length > 0 ? (
+          {LiveData?.length > 0 ? (
             <DataTable head={LiveData?.head} body={LiveData?.body} />
           ) : (
             <p className="text-lg font-semibold">Not Found</p>
