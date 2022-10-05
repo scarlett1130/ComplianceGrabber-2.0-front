@@ -37,8 +37,17 @@ export async function fetchFutureElectronics(partnumber: string) {
       }
     );
 
-    if (resp?.data?.offers.length != 0) {
-      return resp?.data?.offers;
+    if (resp?.data?.offers.length != 0 && resp.data.offers[0].mpn) {
+      return [
+        {
+          mpn: resp.data.offers[0].quantities.quantity_available,
+          "available quantity":
+            resp.data.offers[0].quantities.quantity_on_order,
+          "quantity on order": resp.data.offers[0].quantities.quantity_on_order,
+          category: resp.data.offers[0].categories[0].name,
+          "seller partnumber": resp?.data?.offers[0].part_id.seller_part_number,
+        },
+      ];
     } else {
       return [{ status: "not found" }];
     }

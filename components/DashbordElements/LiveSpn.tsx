@@ -33,6 +33,7 @@ function LiveSpn() {
         partnumbers,
       });
 
+      console.log(response?.LiveData);
       setDownloadable(response?.csv_data || "");
       setLiveData(response?.LiveData || "");
       log(LiveData.body);
@@ -124,8 +125,10 @@ function LiveSpn() {
         <div className="relative mt-16 min-h-[500px]">
           {Loading && <Loader />}
 
-          {LiveData && (
+          {LiveData.length > 0 ? (
             <DataTable head={LiveData?.head} body={LiveData?.body} />
+          ) : (
+            <p className="text-lg font-semibold">Not Found</p>
           )}
         </div>
       </div>
