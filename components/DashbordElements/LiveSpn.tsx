@@ -11,6 +11,7 @@ function LiveSpn() {
   const [supplier, setsupplier] = useState("");
   const [type, settype] = useState("");
   const [SearchInput, setSearchInput] = useState("");
+  const [PreviousSearchInput, setPreviousSearchInput] = useState("");
   const [Loading, setLoading] = useState(false);
 
   const [LiveData, setLiveData] = useState<any>("");
@@ -18,18 +19,22 @@ function LiveSpn() {
   async function SearchLiveData() {
     if (!SearchInput || !type || !supplier) return;
     try {
+      // if (PreviousSearchInput == SearchInput) return;
       setLoading(true);
       setLiveData(null);
-      let partnumbers = SearchInput.split(",");
-      partnumbers = [...new Set(partnumbers)];
 
-      console.log(type, supplier, partnumbers);
+      let partnumbers = SearchInput.split(",");
+      setPreviousSearchInput(SearchInput);
+      partnumbers = partnumbers.filter(
+        (item, index) => partnumbers.indexOf(item) === index
+      );
+
       const response = await GetLiveData({
         type,
         supplier,
         partnumbers,
       });
-      console.log(response?.LiveData);
+      console.log(response);
       setLiveData(response?.LiveData || "");
 
       setLoading(false);
@@ -40,7 +45,7 @@ function LiveSpn() {
   return (
     <div>
       <DahbordHeader title="Live Spn Data" />
-      <div className="mt-9">
+      <div className="mt-9 flex flex-col flex-shrink">
         <button onClick={() => router.push("/dashbord")}>
           <svg
             width="52"

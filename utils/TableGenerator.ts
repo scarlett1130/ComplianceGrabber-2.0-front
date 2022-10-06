@@ -9,8 +9,7 @@ let tabledata = { head, body };
 
 export function generateTableData(data: any) {
   for (let d of data) {
-    if (Object.keys(d).length > head.length) head = Object.keys(d);
-    else head = [];
+    head = Object.keys(d);
   }
 
   tabledata.head = head;
@@ -63,34 +62,6 @@ export function generateDigiKeyTable(data: { [x: string]: any }) {
 
   tabledata.body.push(temp);
   return tabledata;
-}
-
-export function generateFutureElectronicTableData(data: any) {
-  try {
-    tabledata.head = ["Subcategory", "Partnumber", "Manufacturer Name"];
-    tabledata.body = [];
-
-    for (let d of data) {
-      const d_arr = [];
-      for (let h of head) {
-        if (h === "Subcategory") {
-          d["categories"] = d["categories"][0].subcategory_name;
-          d_arr.push(d["categories"]);
-        } else if (h === "Partnumber") {
-          d["part_id"] = d["part_id"]?.seller_part_number;
-          d_arr.push(d["part_id"]);
-        } else if (h == "Manufacturer Name") {
-          d["part_attributes"] = d["part_attributes"][20].value;
-          d_arr.push(d["part_attributes"]);
-        }
-      }
-      tabledata.body.push(d_arr);
-    }
-    return tabledata;
-  } catch (err) {
-    tabledata.head = ["status"];
-    tabledata.body = [["not Found"]];
-  }
 }
 
 export function generateMouserTableData(data: any) {

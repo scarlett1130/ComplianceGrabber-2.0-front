@@ -26,15 +26,16 @@ export async function getLiveManufacturerData({
           const response = await axios.get(
             `https://fastapi0013.herokuapp.com/molex/${keyword}`
           );
-          if (response) {
+
+          if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
           }
         })
       );
-      const csv_data = Papa.unparse(rawData);
 
+      const csv_data = Papa.unparse(rawData);
       const LiveData = generateTableData(rawData);
-      console.log(LiveData);
+
       return { csv_data, LiveData };
     } catch (error) {
       throw new Error(`${error}`);
@@ -48,7 +49,7 @@ export async function getLiveManufacturerData({
             `https://fastapi0013.herokuapp.com/onsemi/${keyword}`
           );
 
-          if (response) {
+          if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
           }
         })
@@ -70,7 +71,7 @@ export async function getLiveManufacturerData({
             `https://fastapi0013.herokuapp.com/omron/${keyword}`
           );
 
-          if (response) {
+          if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
           }
         })
@@ -92,7 +93,7 @@ export async function getLiveManufacturerData({
           const response = await axios.get(
             `https://fastapi0013.herokuapp.com/wago/${keyword}`
           );
-          if (response) {
+          if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
           }
         })
@@ -114,7 +115,7 @@ export async function getLiveManufacturerData({
           const response = await axios.get(
             `https://fastapi0013.herokuapp.com/te/${keyword}`
           );
-          if (response) {
+          if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
           }
         })
@@ -169,7 +170,7 @@ export async function getLiveDistributersData({
         const response = await axios.get(
           `https://fastapi0013.herokuapp.com/arrow/${partnumber}`
         );
-        if (response) {
+        if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
         }
       })
@@ -185,7 +186,7 @@ export async function getLiveDistributersData({
         const response = await axios.get(
           `https://fastapi0013.herokuapp.com/phoenix/${partnumber}`
         );
-        if (response) {
+        if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
         }
       })
@@ -200,7 +201,7 @@ export async function getLiveDistributersData({
         const response = await axios.get(
           `https://fastapi0013.herokuapp.com/maxim/${partnumber}`
         );
-        if (response) {
+        if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
         }
       })
@@ -216,7 +217,8 @@ export async function getLiveDistributersData({
         const response = await axios.get(
           `https://fastapi0013.herokuapp.com/rscomponents/${partnumber}`
         );
-        if (response) {
+
+        if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
         }
       })
@@ -229,7 +231,7 @@ export async function getLiveDistributersData({
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await fetchFutureElectronics(partnumber);
-
+        console.log("herr", response);
         if (response && response[0]?.status !== "not found") {
           rawData = [...rawData, ...response];
         }
