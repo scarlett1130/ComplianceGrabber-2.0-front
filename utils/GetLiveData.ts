@@ -232,7 +232,7 @@ export async function getLiveDistributersData({
       partnumbers.map(async (partnumber) => {
         const response = await fetchFutureElectronics(partnumber);
         console.log("herr", response);
-        if (response && response[0]?.status !== "not found") {
+        if (response && response[0]) {
           rawData = [...rawData, ...response];
         }
       })
