@@ -10,6 +10,7 @@ let tabledata = { head, body };
 export function generateTableData(data: any) {
   for (let d of data) {
     if (Object.keys(d).length > head.length) head = Object.keys(d);
+    else head = [];
   }
 
   tabledata.head = head;

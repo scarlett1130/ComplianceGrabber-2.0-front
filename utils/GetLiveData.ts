@@ -34,7 +34,7 @@ export async function getLiveManufacturerData({
       const csv_data = Papa.unparse(rawData);
 
       const LiveData = generateTableData(rawData);
-
+      console.log(LiveData);
       return { csv_data, LiveData };
     } catch (error) {
       throw new Error(`${error}`);
@@ -56,7 +56,7 @@ export async function getLiveManufacturerData({
       const csv_data = Papa.unparse(rawData);
 
       const LiveData = generateTableData(rawData);
-
+      console.log(LiveData);
       return { csv_data, LiveData };
     } catch (error) {
       throw new Error(`${error}`);
@@ -78,6 +78,7 @@ export async function getLiveManufacturerData({
       const csv_data = Papa.unparse(rawData);
 
       const LiveData = generateTableData(rawData);
+      console.log(LiveData);
 
       return { csv_data, LiveData };
     } catch (error) {
@@ -99,6 +100,7 @@ export async function getLiveManufacturerData({
       const csv_data = Papa.unparse(rawData);
 
       const LiveData = generateTableData(rawData);
+      console.log(LiveData);
 
       return { csv_data, LiveData };
     } catch (error) {
@@ -174,6 +176,7 @@ export async function getLiveDistributersData({
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateTableData(rawData);
+    console.log(LiveData);
     return { csv_data, LiveData };
   } else if (supplier == "Phoenix") {
     let rawData: any[] = [];
@@ -204,6 +207,7 @@ export async function getLiveDistributersData({
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateTableData(rawData);
+    console.log(LiveData);
     return { csv_data, LiveData };
   } else if (supplier == "Rs-components") {
     let rawData: any[] = [];
@@ -233,6 +237,7 @@ export async function getLiveDistributersData({
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateTableData(rawData);
+    console.log(LiveData);
     return { csv_data, LiveData };
   }
 }

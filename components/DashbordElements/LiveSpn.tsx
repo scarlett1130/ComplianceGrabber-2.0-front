@@ -4,7 +4,7 @@ import DahbordHeader from "./DahbordHeader";
 import suppliersList from "../../utils/suppliers";
 import GetLiveData from "../../utils/GetLiveData";
 import Loader from "./Loader";
-import DataTable from "./DataTable2";
+import DataTable from "./DataTable";
 
 function LiveSpn() {
   const router = useRouter();
@@ -13,27 +13,25 @@ function LiveSpn() {
   const [SearchInput, setSearchInput] = useState("");
   const [Loading, setLoading] = useState(false);
 
-
   const [LiveData, setLiveData] = useState<any>("");
-
-  function log(input: string) {
-    console.log(input);
-  }
 
   async function SearchLiveData() {
     if (!SearchInput || !type || !supplier) return;
     try {
       setLoading(true);
       setLiveData(null);
-      const partnumbers = SearchInput.split(",");
+      let partnumbers = SearchInput.split(",");
+      partnumbers = [...new Set(partnumbers)];
 
+      console.log(type, supplier, partnumbers);
       const response = await GetLiveData({
         type,
         supplier,
         partnumbers,
       });
+      console.log(response?.LiveData);
       setLiveData(response?.LiveData || "");
-     
+
       setLoading(false);
     } catch (e) {
       setLoading(false);
@@ -109,7 +107,7 @@ function LiveSpn() {
           <input
             onChange={(e) => setSearchInput(e.target.value)}
             placeholder="Enter SPN Number"
-            className="bg-white outline-0 text-[#0E8D90] font-poppins text-lg w-full p-3 rounded-md"
+            className="bg-white outline-0 text-[#0E8D90] font-poppins text-lg flex flex-1  p-3 rounded-md"
           />
           <button
             className="sidebar-color py-3 px-14 rounded-lg text-white font-poppins text-lg"
@@ -121,10 +119,8 @@ function LiveSpn() {
         <div className="relative mt-16 min-h-[500px]">
           {Loading && <Loader />}
 
-          {LiveData?.length > 0 ? (
+          {LiveData && (
             <DataTable head={LiveData?.head} body={LiveData?.body} />
-          ) : (
-            <p className="text-lg font-semibold">Not Found</p>
           )}
         </div>
       </div>

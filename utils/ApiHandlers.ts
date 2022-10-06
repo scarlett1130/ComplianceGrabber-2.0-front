@@ -36,7 +36,7 @@ export async function fetchFutureElectronics(partnumber: string) {
         },
       }
     );
-
+    console.log(resp.data.offers[0]);
     if (resp?.data?.offers.length != 0 && resp.data.offers[0].mpn) {
       return [
         {
