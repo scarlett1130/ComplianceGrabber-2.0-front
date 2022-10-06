@@ -1,7 +1,7 @@
 axios = require("axios");
 const call = async () => {
   const resp = await axios.get(
-    `https://api.futureelectronics.com/api/v1/pim-future/lookup/?part_number=MIC2287CYD5-TR`,
+    `https://api.futureelectronics.com/api/v1/pim-future/lookup/?part_number=AL5890-30P1-13`,
     {
       headers: {
         "x-orbweaver-licensekey": "GAQZI-7GNVU-QNH36-Y4QUX-607ON",
