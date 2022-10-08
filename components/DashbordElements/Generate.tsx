@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DahbordHeader from "./DahbordHeader";
+import DahbordHeader from "./DahboardHeader";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
@@ -13,13 +13,13 @@ function Generate() {
   function NextStep() {
     setstep(step + 1);
   }
-  function HandleStep(value:number){
-        if(value>step) return
-        setstep(value);
+  function HandleStep(value: number) {
+    if (value > step) return;
+    setstep(value);
   }
   return (
     <div className="">
-      <DahbordHeader title="Generate Data" />
+      <DahbordHeader title="Upload Data" />
       <div className="mt-9">
         <Stepper step={step} HandleStep={HandleStep} />
         {step == 1 ? (

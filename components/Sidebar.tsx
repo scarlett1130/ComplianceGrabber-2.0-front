@@ -44,7 +44,7 @@ const Sidebar = ({ show, setshow }: SidebarProps) => {
         </svg>
       </button>
       <ButtonLink title="Home" link="/" />
-      <ButtonLink title="Dashbord" link="/dashbord" />
+      <ButtonLink title="Dashboard" link="/dashboard" />
     </div>
   );
 };

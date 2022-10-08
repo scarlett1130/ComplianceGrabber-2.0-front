@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { useRouter } from "next/router";
 import Image from "next/image";
-function DashbordSideBar() {
+function DashboardSideBar() {
   const [showSidebar, setshowSidebar] = useState(false);
   const router = useRouter();
   return (
@@ -49,7 +49,7 @@ function DashbordSideBar() {
           <motion.div className="pt-16 ">
             <div
               className="flex items-center space-x-2 sidebar-element"
-              onClick={() => router.push("/dashbord")}
+              onClick={() => router.push("/dashboard")}
             >
               <svg
                 width="20"
@@ -70,7 +70,7 @@ function DashbordSideBar() {
             </div>
             <div
               className="flex space-x-2 sidebar-element"
-              onClick={() => router.push("/dashbord/findsupplier")}
+              onClick={() => router.push("/dashboard/findsupplier")}
             >
               <svg
                 width="22"
@@ -100,7 +100,7 @@ function DashbordSideBar() {
             </div>
             <div
               className="flex space-x-2 sidebar-element"
-              onClick={() => router.push("/dashbord/generate")}
+              onClick={() => router.push("/dashboard/generate")}
             >
               <svg
                 width="18"
@@ -123,12 +123,12 @@ function DashbordSideBar() {
                 />
               </svg>
 
-              <p>Generate Data </p>
+              <p>Upload Data </p>
             </div>
 
             <button
               className="flex space-x-2 sidebar-element"
-              onClick={() => router.push("/dashbord/livespn")}
+              onClick={() => router.push("/dashboard/livespn")}
             >
               <svg
                 width="24"
@@ -194,4 +194,4 @@ function DashbordSideBar() {
   );
 }
 
-export default DashbordSideBar;
+export default DashboardSideBar;

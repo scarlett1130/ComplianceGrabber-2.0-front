@@ -62,7 +62,7 @@ export async function getLiveManufacturerData({
     } catch (error) {
       throw new Error(`${error}`);
     }
-  } else if (supplier.toLowerCase() == "ormon") {
+  } else if (supplier.toLowerCase() == "omron") {
     try {
       let rawData: any = [];
       await Promise.all(
@@ -186,6 +186,7 @@ export async function getLiveDistributersData({
         const response = await axios.get(
           `https://fastapi0013.herokuapp.com/phoenix/${partnumber}`
         );
+        console.log(response.data);
         if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
         }

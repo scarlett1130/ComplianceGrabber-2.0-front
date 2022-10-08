@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Generate from "../../components/DashbordElements/Generate";
-import DashbordSideBar from "../../components/DashbordSideBar";
+import DashbordSideBar from "../../components/DashboardSideBar";
 import Footer from "../../components/Footer";
 
 function generate() {

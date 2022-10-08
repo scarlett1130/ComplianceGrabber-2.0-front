@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
-import DahbordHeader from "./DahbordHeader";
+import DahbordHeader from "./DahboardHeader";
 
 import StatCard from "./StatCard";
 import SupplierList from "./supllierSection/SupplierList";

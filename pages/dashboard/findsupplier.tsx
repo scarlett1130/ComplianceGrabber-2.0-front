@@ -1,16 +1,18 @@
+import Link from "next/link";
 import React from "react";
-import LiveSpn from "../../components/DashbordElements/LiveSpn";
-import DashbordSideBar from "../../components/DashbordSideBar";
+import DashbordSideBar from "../../components/DashboardSideBar";
 import Footer from "../../components/Footer";
+import { motion } from "framer-motion";
+import FindSupplier from "../../components/DashbordElements/FindSupplier";
 
-function livespn() {
+function Findsupplier() {
   return (
     <>
       <div className="relative flex overflow-hidden">
         <DashbordSideBar />
 
         <div className="p-5 min-h-screen w-full bg-gray-100 ">
-          <LiveSpn />
+          <FindSupplier />
         </div>
       </div>
       <Footer />
@@ -18,4 +20,4 @@ function livespn() {
   );
 }
 
-export default livespn;
+export default Findsupplier;

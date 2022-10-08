@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import DahbordHeader from "./DahbordHeader";
+import DahbordHeader from "./DahboardHeader";
 import suppliersList from "../../utils/suppliers";
 import GetLiveData from "../../utils/GetLiveData";
 import Loader from "./Loader";
@@ -45,8 +45,8 @@ function LiveSpn() {
   return (
     <div>
       <DahbordHeader title="Live Spn Data" />
-      <div className="mt-9 flex flex-col flex-shrink">
-        <button onClick={() => router.push("/dashbord")}>
+      <div className={`mt-9 flex flex-col `}>
+        <button onClick={() => router.push("/dashboard")}>
           <svg
             width="52"
             height="52"
@@ -108,7 +108,7 @@ function LiveSpn() {
           </select>
         </div>
 
-        <div className="flex space-x-9 mt-7">
+        <div className={`flex space-x-9 mt-7`}>
           <input
             onChange={(e) => setSearchInput(e.target.value)}
             placeholder="Enter SPN Number"
@@ -121,11 +121,13 @@ function LiveSpn() {
             Search
           </button>
         </div>
-        <div className="relative mt-16 min-h-[500px]">
+        <div className="relative mt-16 min-h-[500px]  w-full">
           {Loading && <Loader />}
 
           {LiveData && (
-            <DataTable head={LiveData?.head} body={LiveData?.body} />
+            <div className="overflow-x-auto">
+              <DataTable head={LiveData?.head} body={LiveData?.body} />
+            </div>
           )}
         </div>
       </div>

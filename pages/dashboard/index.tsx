@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
-import DashbordSideBar from "../../components/DashbordSideBar";
+import DashbordSideBar from "../../components/DashboardSideBar";
 import Overview from "../../components/DashbordElements/Overview";
 import Footer from "../../components/Footer";
 

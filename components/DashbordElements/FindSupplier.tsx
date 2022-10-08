@@ -1,27 +1,32 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
-import DahbordHeader from "./DahbordHeader";
+import DahbordHeader from "./DahboardHeader";
 import SupplierFoundCard from "./supllierSection/SupplierFoundCard";
 import axios from "axios";
 function FindSupplier() {
   const router = useRouter();
-  const [suppliers, setSuppliers] = useState([]);
+  const [suppliers, setSuppliers] = useState([""]);
   const [Partnumber, setPartnumber] = useState("");
   const [Loading, setLoading] = useState(false);
   async function SearchAllSupplier() {
     setLoading(true);
-    const response = await axios.get(
-      `https://fastapi0013.herokuapp.com/findsupplier/${Partnumber}`
-    );
-    console.log(response.data);
-    setSuppliers(response.data);
-    setLoading(false);
+    try {
+      setSuppliers([]);
+      const response = await axios.get(
+        `https://fastapi0013.herokuapp.com/findsupplier/${Partnumber}`
+      );
+
+      setSuppliers(response.data);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+    }
   }
   return (
     <div>
       <DahbordHeader title="Find The Supplier" />
       <div className="mt-9">
-        <button onClick={() => router.push("/dashbord")}>
+        <button onClick={() => router.push("/dashboard")}>
           <svg
             width="52"
             height="52"
@@ -62,17 +67,26 @@ function FindSupplier() {
             Search
           </button>
         </div>
-        {Loading && <p>Loading...</p>}
 
-        <div className="grid mt-16  grid-cols-1  md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-5 container mx-auto">
-          {suppliers?.map((supplier, i) => (
-            <SupplierFoundCard
-              key={i}
-              supplierName={supplier}
-              LogoPath="/RS.png"
-            />
-          ))}
-        </div>
+        {Loading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            {suppliers.length > 0 ? (
+              <div className="grid mt-16  grid-cols-1  md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-5 container mx-auto">
+                {suppliers?.map((supplier, i) => (
+                  <SupplierFoundCard
+                    key={i}
+                    supplierName={supplier}
+                    LogoPath="/RS.png"
+                  />
+                ))}
+              </div>
+            ) : (
+              <div> No supplier found</div>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
