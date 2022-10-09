@@ -6,7 +6,7 @@ import SupplierFoundCard from "./supllierSection/SupplierFoundCard";
 import axios from "axios";
 function FindSupplier() {
   const router = useRouter();
-  const [suppliers, setSuppliers] = useState([""]);
+  const [suppliers, setSuppliers] = useState([]);
   const [Partnumber, setPartnumber] = useState("");
   const [Loading, setLoading] = useState(false);
   async function SearchAllSupplier() {
