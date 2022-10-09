@@ -72,7 +72,7 @@ function FindSupplier() {
           <p>Loading...</p>
         ) : (
           <>
-            {suppliers.length > 0 ? (
+            {suppliers.length > 0  ? (
               <div className="grid mt-16  grid-cols-1  md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-5 container mx-auto">
                 {suppliers?.map((supplier, i) => (
                   <SupplierFoundCard

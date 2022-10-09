@@ -125,9 +125,7 @@ function LiveSpn() {
           {Loading && <Loader />}
 
           {LiveData && (
-            <div className="overflow-x-auto">
-              <DataTable head={LiveData?.head} body={LiveData?.body} />
-            </div>
+            <DataTable head={LiveData?.head} body={LiveData?.body} />
           )}
         </div>
       </div>

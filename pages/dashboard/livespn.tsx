@@ -9,7 +9,7 @@ function livespn() {
       <div className="relative flex overflow-hidden">
         <DashbordSideBar />
 
-        <div className="px-2  min-h-screen  w-full bg-gray-100 ">
+        <div className="px-2 py-5 min-h-screen  w-full bg-gray-100 ">
           <LiveSpn />
         </div>
       </div>
