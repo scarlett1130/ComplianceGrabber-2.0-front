@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import DahbordHeader from "./DahboardHeader";
+import { findSupplier } from "../../utils/ApiHandlers";
 import SupplierFoundCard from "./supllierSection/SupplierFoundCard";
 import axios from "axios";
 function FindSupplier() {
@@ -16,7 +17,9 @@ function FindSupplier() {
         `https://fastapi0013.herokuapp.com/findsupplier/${Partnumber}`
       );
 
-      setSuppliers(response.data);
+      const suppliers_from_api = await findSupplier(Partnumber);
+
+      setSuppliers([...response.data, ...suppliers_from_api]);
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -72,13 +75,13 @@ function FindSupplier() {
           <p>Loading...</p>
         ) : (
           <>
-            {suppliers.length > 0  ? (
+            {suppliers.length > 0 ? (
               <div className="grid mt-16  grid-cols-1  md:grid-cols-2 lg:grid-cols-3  xl:grid-cols-4 gap-5 container mx-auto">
                 {suppliers?.map((supplier, i) => (
                   <SupplierFoundCard
                     key={i}
                     supplierName={supplier}
-                    LogoPath="/RS.png"
+                    LogoPath={`/logos/${supplier.toLowerCase()}.png`}
                   />
                 ))}
               </div>

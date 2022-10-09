@@ -20,7 +20,7 @@ export default async function fetchMouser(partnumber: string) {
     }
   } catch (err) {
     console.log(err);
-    throw new Error(`${err}`);
+    return [{ status: "not found" }];
   }
 }
 
@@ -40,22 +40,25 @@ export async function fetchFutureElectronics(partnumber: string) {
     if (resp?.data?.offers.length != 0) {
       return [
         {
+          status: "found",
           mpn: resp.data.offers[0].quantities.quantity_available || "NOT FOUND",
           "available quantity":
             resp.data.offers[0].quantities.quantity_on_order || "NOT FOUND",
-          "quantity on order": resp.data.offers[0].quantities.quantity_on_order || "NOT FOUND",
+          "quantity on order":
+            resp.data.offers[0].quantities.quantity_on_order || "NOT FOUND",
           category: resp.data.offers[0].categories[0].name || "NOT FOUND",
-          "seller partnumber": resp?.data?.offers[0].part_id.seller_part_number || "NOT FOUND",
+          "seller partnumber":
+            resp?.data?.offers[0].part_id.seller_part_number || "NOT FOUND",
         },
       ];
     } else {
       return [{ status: "not found" }];
     }
   } catch (err) {
-    throw new Error(`${err}`);
+    console.log(err);
+    return [{ status: "not found" }];
   }
 }
-
 export async function fetchDigiKey(partnumber: string) {
   try {
     const resp = await axios.get(
@@ -65,9 +68,33 @@ export async function fetchDigiKey(partnumber: string) {
     if (resp?.data.length != 0) {
       return resp.data;
     } else {
-      return { status: "not found" };
+      return [{ status: "not found" }];
     }
   } catch (err) {
-    throw new Error(`${err}`);
+    console.log(err);
+    return [{ status: "not found" }];
   }
+}
+
+export async function findSupplier(partnumber: string) {
+  let suppliers = [];
+  try {
+    const response = await fetchMouser(partnumber);
+    if (response && response[0].status !== "not found") {
+      suppliers.push("mouser");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
+  try {
+    const response = await fetchFutureElectronics(partnumber);
+    if (response[0]?.status !== "not found") {
+      suppliers.push("futureelectronics");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+
+  return suppliers;
 }
