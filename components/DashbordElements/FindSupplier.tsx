@@ -14,7 +14,7 @@ function FindSupplier() {
     try {
       setSuppliers([]);
       const response = await axios.get(
-        `https://fastapi0013.herokuapp.com/findsupplier/${Partnumber}`
+        `https://compliancegrabber.herokuapp.com/findsupplier/${Partnumber}`
       );
 
       const suppliers_from_api = await findSupplier(Partnumber);
@@ -85,8 +85,10 @@ function FindSupplier() {
                   />
                 ))}
               </div>
-            ) : (
+            ) : Partnumber !== "" ? (
               <div> No supplier found</div>
+            ) : (
+              <></>
             )}
           </>
         )}

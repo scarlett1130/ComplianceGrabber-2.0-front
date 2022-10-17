@@ -24,7 +24,7 @@ export async function getLiveManufacturerData({
       await Promise.all(
         partnumbers.map(async (keyword: string) => {
           const response = await axios.get(
-            `https://fastapi0013.herokuapp.com/molex/${keyword}`
+            `https://compliancegrabber.herokuapp.com/molex/${keyword}`
           );
 
           if (response && response.data.status !== 404) {
@@ -46,7 +46,7 @@ export async function getLiveManufacturerData({
       await Promise.all(
         partnumbers.map(async (keyword: string) => {
           const response = await axios.get(
-            `https://fastapi0013.herokuapp.com/onsemi/${keyword}`
+            `https://compliancegrabber.herokuapp.com/onsemi/${keyword}`
           );
 
           if (response && response.data.status !== 404) {
@@ -68,7 +68,7 @@ export async function getLiveManufacturerData({
       await Promise.all(
         partnumbers.map(async (keyword: string) => {
           const response = await axios.get(
-            `https://fastapi0013.herokuapp.com/omron/${keyword}`
+            `https://compliancegrabber.herokuapp.com/omron/${keyword}`
           );
 
           if (response && response.data.status !== 404) {
@@ -91,7 +91,7 @@ export async function getLiveManufacturerData({
       await Promise.all(
         partnumbers.map(async (keyword: string) => {
           const response = await axios.get(
-            `https://fastapi0013.herokuapp.com/wago/${keyword}`
+            `https://compliancegrabber.herokuapp.com/wago/${keyword}`
           );
           if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
@@ -113,7 +113,7 @@ export async function getLiveManufacturerData({
       await Promise.all(
         partnumbers.map(async (keyword: string) => {
           const response = await axios.get(
-            `https://fastapi0013.herokuapp.com/te/${keyword}`
+            `https://compliancegrabber.herokuapp.com/te/${keyword}`
           );
           if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
@@ -168,7 +168,7 @@ export async function getLiveDistributersData({
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await axios.get(
-          `https://fastapi0013.herokuapp.com/arrow/${partnumber}`
+          `https://compliancegrabber.herokuapp.com/arrow/${partnumber}`
         );
         if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
@@ -184,7 +184,7 @@ export async function getLiveDistributersData({
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await axios.get(
-          `https://fastapi0013.herokuapp.com/phoenix/${partnumber}`
+          `https://compliancegrabber.herokuapp.com/phoenix/${partnumber}`
         );
         console.log(response.data);
         if (response && response.data.status !== 404) {
@@ -200,7 +200,7 @@ export async function getLiveDistributersData({
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await axios.get(
-          `https://fastapi0013.herokuapp.com/maxim/${partnumber}`
+          `https://compliancegrabber.herokuapp.com/maxim/${partnumber}`
         );
         if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
@@ -216,7 +216,7 @@ export async function getLiveDistributersData({
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await axios.get(
-          `https://fastapi0013.herokuapp.com/rscomponents/${partnumber}`
+          `https://compliancegrabber.herokuapp.com/rscomponents/${partnumber}`
         );
 
         if (response && response.data.status !== 404) {
