@@ -17,4 +17,7 @@
   .sidebar-color{
     @apply bg-gradient-to-t from-[#079290] to-[#215172]
   }
+  .tablebar-color{
+    @apply bg-gradient-to-t from-[#205a76] to-[#0f868b]
+  }
 }

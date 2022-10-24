@@ -28,14 +28,14 @@ export default function DataTable({ head, body }: any) {
         <div className="">
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-              <thead className="sidebar-color text-white text-sm bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
+              <thead className="tablebar-color text-white text-base h-20 bg-gray-50 dark:bg-gray-700 dark:text-gray-400 ">
                 <tr>
                   <th scope="col" className="py-3 px-6 text-center">
                     Index
                   </th>
                   {
                     head.map((data: string, i: number) =>
-                      <th key={i} scope="col" className="py-3 px-6 text-center">
+                      <th key={i} scope="col" className=" text-center">
                         {data}
                       </th>
                     )
