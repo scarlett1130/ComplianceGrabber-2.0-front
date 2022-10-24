@@ -38,6 +38,9 @@ module.exports = {
         "Loader-animation": "spinaround 4s linear infinite",
         "Loader-reverse-animation": "reversespinaround 4s linear infinite",
       },
+      colors: {
+        'odd-color': '#5faba270',
+      },
     },
   },
   plugins: [
