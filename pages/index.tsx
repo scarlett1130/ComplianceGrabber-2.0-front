@@ -10,7 +10,7 @@ import TutorialSection from "../components/TutorialSection";
 
 const Home: NextPage = () => {
   return (
-    <div className="overflow-auto h-full">
+    <div className="overflow-hidden h-full">
       <div className=" min-h-screen ">
         <Navbar />
         <Banner />

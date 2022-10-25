@@ -4,6 +4,8 @@ import DahbordHeader from "./DahboardHeader";
 import { findSupplier } from "../../utils/ApiHandlers";
 import SupplierFoundCard from "./supllierSection/SupplierFoundCard";
 import axios from "axios";
+import Loader from "./Loader";
+
 function FindSupplier() {
   const router = useRouter();
   const [suppliers, setSuppliers] = useState([]);
@@ -72,7 +74,7 @@ function FindSupplier() {
         </div>
 
         {Loading ? (
-          <p>Loading...</p>
+          <Loader />
         ) : (
           <>
             {suppliers.length > 0 ? (
@@ -85,10 +87,8 @@ function FindSupplier() {
                   />
                 ))}
               </div>
-            ) : Partnumber !== "" ? (
-              <div> No supplier found</div>
-            ) : (
-              <></>
+            ) : suppliers.length == 0 || Partnumber !== "" && (
+              <div>No supplier found</div>
             )}
           </>
         )}
