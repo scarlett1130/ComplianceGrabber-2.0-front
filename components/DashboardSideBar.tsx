@@ -30,7 +30,7 @@ function DashboardSideBar() {
         className={`  ${showSidebar ? "fixed block" : "relative hidden md:block "
           } z-20 smooth-tranisiton sidebar-color min-h-screen min-w-[250px] px-2  py-4`}
       >
-        <div className="fixed ">
+        <div>
           {/* LOGO + APP NAME */}
           <Link href="/">
             <a>
@@ -144,7 +144,7 @@ function DashboardSideBar() {
 
               <p>Live SPN Data</p>
             </button>
-            <div className="mt-12 bottom-2 h-full ">
+            <div className="mt-16 bottom-2 h-full ">
               <button className="flex space-x-2  items-center sidebar-element">
                 <svg
                   width="20"

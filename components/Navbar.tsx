@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="relative lg:absolute lg:left-14 text-white flex">
         <Link href="/" className="cursor-grab">
           <a>
-            <img src="/logo.png" style={{ width: "90px", height: "60px" }} className="p-1" alt="logo" />
+            <Image src="/logo.png" width={90} height={60} className="p-1" alt="logo" />
           </a>
         </Link>
       </div>

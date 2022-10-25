@@ -54,7 +54,7 @@ export default function DataTable({ head, body }: any) {
                       {
 
                         col.map((item: any, j: number) =>
-                          <td className="py-4 px-6 font-medium text-gray-900 text-center">
+                          <td key={j} className="py-4 px-6 font-medium text-gray-900 text-center">
                             {item}
                           </td>
                         )
