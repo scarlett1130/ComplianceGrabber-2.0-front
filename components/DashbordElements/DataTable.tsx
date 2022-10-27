@@ -26,7 +26,7 @@ export default function DataTable({ head, body }: any) {
       <div className="text-center py-2 font-medium">{body.length && `Total Rows : ${body.length}`}</div>
       {body.length >= 1 ? (
         <div className="">
-          <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
+          <div className="overflow-x-auto relative shadow-md sm:rounded-lg" style={{ margin: "auto", maxWidth: `${window.innerWidth / 5 * 4}px` }}>
             <table className="w-full text-sm text-left text-gray-500">
               <thead className="tablebar-color text-white text-base h-20 bg-gray-50 ">
                 <tr>
@@ -35,7 +35,7 @@ export default function DataTable({ head, body }: any) {
                   </th>
                   {
                     head.map((data: string, i: number) =>
-                      <th key={i} scope="col" className=" text-center">
+                      <th key={i} scope="col" className=" text-center py-3 px-6">
                         {data}
                       </th>
                     )

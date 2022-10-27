@@ -71,7 +71,7 @@ export function generateMouserTableData(data: any) {
   tabledata.body = [];
   for (let d of data) {
     const d_arr = [];
-    for (let h of head) {
+    for (let h of tabledata.head) {
       if (h == "ProductCompliance") {
         let compliances = [];
         for (let compliance of d[h]) {
