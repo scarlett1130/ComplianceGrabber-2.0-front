@@ -26,11 +26,11 @@ function Step1({ nextStep }: stepProps) {
 
         <p>template</p>
         <a
-          href="/Template.xlsx"
+          href="/template.xlsx"
           download="template"
           className="sidebar-color text-white  font-poppins px-9 py-3 rounded-lg "
         >
-          Download Template  
+          Download Template
         </a>
       </div>
       <div className="flex justify-center items-center mt-7">

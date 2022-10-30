@@ -21,6 +21,7 @@ export async function getLiveManufacturerData({
   if (supplier == "Molex") {
     try {
       let rawData: any = [];
+      let failedData: any = [];
       await Promise.all(
         partnumbers.map(async (keyword: string) => {
           const response = await axios.get(
@@ -29,6 +30,8 @@ export async function getLiveManufacturerData({
 
           if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
+          } else {
+            failedData = [...failedData, keyword];
           }
         })
       );
@@ -36,13 +39,14 @@ export async function getLiveManufacturerData({
       const csv_data = Papa.unparse(rawData);
       const LiveData = generateTableData(rawData);
 
-      return { csv_data, LiveData };
+      return { csv_data, LiveData, failedData };
     } catch (error) {
       throw new Error(`${error}`);
     }
   } else if (supplier.toLowerCase() == "onsemi") {
     try {
       let rawData: any = [];
+      let failedData: any = [];
       await Promise.all(
         partnumbers.map(async (keyword: string) => {
           const response = await axios.get(
@@ -51,6 +55,8 @@ export async function getLiveManufacturerData({
 
           if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
+          } else {
+            failedData = [...failedData, keyword];
           }
         })
       );
@@ -58,13 +64,14 @@ export async function getLiveManufacturerData({
 
       const LiveData = generateTableData(rawData);
       console.log(LiveData);
-      return { csv_data, LiveData };
+      return { csv_data, LiveData, failedData };
     } catch (error) {
       throw new Error(`${error}`);
     }
   } else if (supplier.toLowerCase() == "omron") {
     try {
       let rawData: any = [];
+      let failedData: any = [];
       await Promise.all(
         partnumbers.map(async (keyword: string) => {
           const response = await axios.get(
@@ -73,6 +80,8 @@ export async function getLiveManufacturerData({
 
           if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
+          } else {
+            failedData = [...failedData, keyword];
           }
         })
       );
@@ -81,13 +90,14 @@ export async function getLiveManufacturerData({
       const LiveData = generateTableData(rawData);
       console.log(LiveData);
 
-      return { csv_data, LiveData };
+      return { csv_data, LiveData, failedData };
     } catch (error) {
       throw new Error(`${error}`);
     }
   } else if (supplier == "Wago") {
     try {
       let rawData: any = [];
+      let failedData: any = [];
       await Promise.all(
         partnumbers.map(async (keyword: string) => {
           const response = await axios.get(
@@ -95,6 +105,8 @@ export async function getLiveManufacturerData({
           );
           if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
+          } else {
+            failedData = [...failedData, keyword];
           }
         })
       );
@@ -103,13 +115,14 @@ export async function getLiveManufacturerData({
       const LiveData = generateTableData(rawData);
       console.log(LiveData);
 
-      return { csv_data, LiveData };
+      return { csv_data, LiveData, failedData };
     } catch (error) {
       throw new Error(`${error}`);
     }
   } else if (supplier == "Te") {
     try {
       let rawData: any = [];
+      let failedData: any = [];
       await Promise.all(
         partnumbers.map(async (keyword: string) => {
           const response = await axios.get(
@@ -117,6 +130,8 @@ export async function getLiveManufacturerData({
           );
           if (response && response.data.status !== 404) {
             rawData = [...rawData, ...[response.data]];
+          } else {
+            failedData = [...failedData, keyword];
           }
         })
       );
@@ -124,7 +139,7 @@ export async function getLiveManufacturerData({
 
       const LiveData = generateTableData(rawData);
 
-      return { csv_data, LiveData };
+      return { csv_data, LiveData, failedData };
     } catch (error) {
       throw new Error(`${error}`);
     }
@@ -137,34 +152,41 @@ export async function getLiveDistributersData({
 }: liveDataProps) {
   if (supplier == "Mouser") {
     let rawData: any[] = [];
+    let failedData: any = [];
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await fetchMouser(partnumber);
 
         if (response && response?.data?.status != "not found") {
           rawData = [...rawData, ...response];
+        } else {
+          failedData = [...failedData, partnumber];
         }
       })
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateMouserTableData(rawData);
 
-    return { csv_data, LiveData };
+    return { csv_data, LiveData, failedData };
   } else if (supplier == "Digikey") {
     let rawData: any[] = [];
+    let failedData: any = [];
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await fetchDigiKey(partnumber);
         if (response && response?.status != "not found") {
           rawData = [...rawData, ...response];
+        } else {
+          failedData = [...failedData, partnumber];
         }
       })
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateDigiKeyTable(rawData);
-    return { csv_data, LiveData };
+    return { csv_data, LiveData, failedData };
   } else if (supplier.toLowerCase() == "arrow") {
     let rawData: any[] = [];
+    let failedData: any = [];
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await axios.get(
@@ -172,15 +194,18 @@ export async function getLiveDistributersData({
         );
         if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
+        } else {
+          failedData = [...failedData, partnumber];
         }
       })
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateTableData(rawData);
     console.log(LiveData);
-    return { csv_data, LiveData };
+    return { csv_data, LiveData, failedData };
   } else if (supplier == "Phoenix") {
     let rawData: any[] = [];
+    let failedData: any = [];
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await axios.get(
@@ -189,30 +214,37 @@ export async function getLiveDistributersData({
         console.log(response.data);
         if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
+        } else {
+          failedData = [...failedData, partnumber];
         }
       })
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateTableData(rawData);
-    return { csv_data, LiveData };
+    return { csv_data, LiveData, failedData };
   } else if (supplier == "Maxim") {
     let rawData: any[] = [];
+    let failedData: any = [];
     await Promise.all(
       partnumbers.map(async (partnumber) => {
+        partnumber = partnumber.replace(/\//g, ":");
         const response = await axios.get(
           `https://compliancegrabber.herokuapp.com/maxim/${partnumber}`
         );
         if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
+        } else {
+          failedData = [...failedData, partnumber];
         }
       })
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateTableData(rawData);
     console.log(LiveData);
-    return { csv_data, LiveData };
+    return { csv_data, LiveData, failedData };
   } else if (supplier == "Rs-components") {
     let rawData: any[] = [];
+    let failedData: any = [];
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await axios.get(
@@ -221,27 +253,32 @@ export async function getLiveDistributersData({
 
         if (response && response.data.status !== 404) {
           rawData = [...rawData, ...[response.data]];
+        } else {
+          failedData = [...failedData, partnumber];
         }
       })
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateTableData(rawData);
-    return { csv_data, LiveData };
+    return { csv_data, LiveData, failedData };
   } else if (supplier == "Future Electronics") {
     let rawData: any[] = [];
+    let failedData: any = [];
     await Promise.all(
       partnumbers.map(async (partnumber) => {
         const response = await fetchFutureElectronics(partnumber);
         console.log("herr", response);
         if (response && response[0]) {
           rawData = [...rawData, ...response];
+        } else {
+          failedData = [...failedData, partnumber];
         }
       })
     );
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateTableData(rawData);
     console.log(LiveData);
-    return { csv_data, LiveData };
+    return { csv_data, LiveData, failedData };
   }
 }
 
