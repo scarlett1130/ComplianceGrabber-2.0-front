@@ -2,6 +2,7 @@ import React from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface modalProps {
   isOpen: boolean;
@@ -55,7 +56,7 @@ function LoginModal({ openModal, closeModal, isOpen }: modalProps) {
                       </p>
                     </div>
                   </Dialog.Title>
-                  <div className="mt-2">
+                  {/* <div className="mt-2">
                     <div>
                       <label className="block text-sm font-poppins text-gray-500">
                         Email
@@ -85,16 +86,19 @@ function LoginModal({ openModal, closeModal, isOpen }: modalProps) {
                         />
                       </div>
                     </div>
-                  </div>
+                  </div> */}
 
                   <div className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex w-full bg-blue-700 justify-center rounded-lg text-white border border-transparent  py-2 text-sm font-poppins   focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
-                    >
-                      Login
-                    </button>
+                    <Link href="/api/login" passHref>
+                      <button
+                        type="button"
+                        className="inline-flex w-full bg-blue-700 justify-center rounded-lg text-white border border-transparent  py-2 text-sm font-poppins   focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                        onClick={closeModal}
+                      >
+                        Login
+                      </button>
+                    </Link>
+
                   </div>
                 </Dialog.Panel>
               </Transition.Child>

@@ -155,13 +155,20 @@ export async function getLiveDistributersData({
     let failedData: any = [];
     await Promise.all(
       partnumbers.map(async (partnumber) => {
-        const response = await fetchMouser(partnumber);
-
-        if (response && response?.data?.status != "not found") {
-          rawData = [...rawData, ...response];
+        // const response = await fetchMouser(partnumber);
+        const response = await axios.get(
+          `https://compliancegrabber.herokuapp.com/mouser/${partnumber}`
+        );
+        if (response && response.data.status !== 404) {
+          rawData = [...rawData, ...[response.data]];
         } else {
           failedData = [...failedData, partnumber];
         }
+        // if (response && response?.data?.status != "not found") {
+        //   rawData = [...rawData, ...response];
+        // } else {
+        //   failedData = [...failedData, partnumber];
+        // }
       })
     );
     const csv_data = Papa.unparse(rawData);
