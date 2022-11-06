@@ -143,6 +143,25 @@ export async function getLiveManufacturerData({
     } catch (error) {
       throw new Error(`${error}`);
     }
+  } else if (supplier == "Phoenix") {
+    let rawData: any[] = [];
+    let failedData: any = [];
+    await Promise.all(
+      partnumbers.map(async (partnumber) => {
+        const response = await axios.get(
+          `https://compliancegrabber.herokuapp.com/phoenix/${partnumber}`
+        );
+        console.log(response.data);
+        if (response && response.data.status !== 404) {
+          rawData = [...rawData, ...[response.data]];
+        } else {
+          failedData = [...failedData, partnumber];
+        }
+      })
+    );
+    const csv_data = Papa.unparse(rawData);
+    const LiveData = generateTableData(rawData);
+    return { csv_data, LiveData, failedData };
   }
 }
 
@@ -209,25 +228,6 @@ export async function getLiveDistributersData({
     const csv_data = Papa.unparse(rawData);
     const LiveData = generateTableData(rawData);
     console.log(LiveData);
-    return { csv_data, LiveData, failedData };
-  } else if (supplier == "Phoenix") {
-    let rawData: any[] = [];
-    let failedData: any = [];
-    await Promise.all(
-      partnumbers.map(async (partnumber) => {
-        const response = await axios.get(
-          `https://compliancegrabber.herokuapp.com/phoenix/${partnumber}`
-        );
-        console.log(response.data);
-        if (response && response.data.status !== 404) {
-          rawData = [...rawData, ...[response.data]];
-        } else {
-          failedData = [...failedData, partnumber];
-        }
-      })
-    );
-    const csv_data = Papa.unparse(rawData);
-    const LiveData = generateTableData(rawData);
     return { csv_data, LiveData, failedData };
   } else if (supplier == "Maxim") {
     let rawData: any[] = [];

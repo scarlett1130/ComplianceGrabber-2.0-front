@@ -9,7 +9,7 @@ import DataTable from "./DataTable";
 function LiveSpn() {
   const router = useRouter();
   const [supplier, setsupplier] = useState("");
-  const [type, settype] = useState("");
+  const [type, settype] = useState("supplier");
   const [SearchInput, setSearchInput] = useState("");
   const [PreviousSearchInput, setPreviousSearchInput] = useState("");
   const [Loading, setLoading] = useState(false);
@@ -76,7 +76,7 @@ function LiveSpn() {
         </button>
         <div className="flex mt-6 space-x-7">
           <select
-            onChange={(e) => settype(e.target.value)}
+            onChange={(e) => settype(e.target.value == "" ? "supplier" : e.target.value)}
             name="Type of supplier"
             className="w-full  my-2 smooth-transition min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0"
           >
@@ -93,18 +93,18 @@ function LiveSpn() {
             name="supplier"
             className="w-full mx-5 my-2 smooth-transition min-h-[50px] rounded-lg font-poppins text-lg cursor-pointer hover:shadow-lg shadow-md border-0"
           >
-            <option value="">Select supplier</option>
+            <option value="">Select {type}</option>
             {type == "Manufacturer"
               ? suppliersList.manufacturers.map((manufacturer, i) => (
-                  <option key={i} value={manufacturer}>
-                    {manufacturer}
-                  </option>
-                ))
+                <option key={i} value={manufacturer}>
+                  {manufacturer}
+                </option>
+              ))
               : suppliersList.distributers.map((distributer, i) => (
-                  <option key={i} value={distributer}>
-                    {distributer}
-                  </option>
-                ))}
+                <option key={i} value={distributer}>
+                  {distributer}
+                </option>
+              ))}
           </select>
         </div>
 
