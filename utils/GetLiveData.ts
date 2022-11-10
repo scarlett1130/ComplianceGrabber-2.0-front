@@ -29,6 +29,7 @@ export async function getLiveManufacturerData({
           );
 
           if (response && response.data.status !== 404) {
+            response.data = { SPN: keyword, ...response.data };
             rawData = [...rawData, ...[response.data]];
           } else {
             failedData = [...failedData, keyword];
@@ -54,6 +55,7 @@ export async function getLiveManufacturerData({
           );
 
           if (response && response.data.status !== 404) {
+            response.data = { SPN: keyword, ...response.data };
             rawData = [...rawData, ...[response.data]];
           } else {
             failedData = [...failedData, keyword];
@@ -79,6 +81,7 @@ export async function getLiveManufacturerData({
           );
 
           if (response && response.data.status !== 404) {
+            response.data = { SPN: keyword, ...response.data };
             rawData = [...rawData, ...[response.data]];
           } else {
             failedData = [...failedData, keyword];
@@ -104,6 +107,7 @@ export async function getLiveManufacturerData({
             `https://compliancegrabber.herokuapp.com/wago/${keyword}`
           );
           if (response && response.data.status !== 404) {
+            response.data = { SPN: keyword, ...response.data };
             rawData = [...rawData, ...[response.data]];
           } else {
             failedData = [...failedData, keyword];
@@ -129,6 +133,7 @@ export async function getLiveManufacturerData({
             `https://compliancegrabber.herokuapp.com/te/${keyword}`
           );
           if (response && response.data.status !== 404) {
+            response.data = { SPN: keyword, ...response.data };
             rawData = [...rawData, ...[response.data]];
           } else {
             failedData = [...failedData, keyword];
@@ -153,6 +158,7 @@ export async function getLiveManufacturerData({
         );
         console.log(response.data);
         if (response && response.data.status !== 404) {
+          response.data = { SPN: partnumber, ...response.data };
           rawData = [...rawData, ...[response.data]];
         } else {
           failedData = [...failedData, partnumber];
@@ -179,6 +185,7 @@ export async function getLiveDistributersData({
           `https://compliancegrabber.herokuapp.com/mouser/${partnumber}`
         );
         if (response && response.data.status !== 404) {
+          response.data = { SPN: partnumber, ...response.data };
           rawData = [...rawData, ...[response.data]];
         } else {
           failedData = [...failedData, partnumber];
@@ -201,6 +208,7 @@ export async function getLiveDistributersData({
       partnumbers.map(async (partnumber) => {
         const response = await fetchDigiKey(partnumber);
         if (response && response?.status != "not found") {
+          response.data = { SPN: partnumber, ...response.data };
           rawData = [...rawData, ...response];
         } else {
           failedData = [...failedData, partnumber];
@@ -219,6 +227,7 @@ export async function getLiveDistributersData({
           `https://compliancegrabber.herokuapp.com/arrow/${partnumber}`
         );
         if (response && response.data.status !== 404) {
+          response.data = { SPN: partnumber, ...response.data };
           rawData = [...rawData, ...[response.data]];
         } else {
           failedData = [...failedData, partnumber];
@@ -239,6 +248,7 @@ export async function getLiveDistributersData({
           `https://compliancegrabber.herokuapp.com/maxim/${partnumber}`
         );
         if (response && response.data.status !== 404) {
+          response.data = { SPN: partnumber, ...response.data };
           rawData = [...rawData, ...[response.data]];
         } else {
           failedData = [...failedData, partnumber];
@@ -259,6 +269,7 @@ export async function getLiveDistributersData({
         );
 
         if (response && response.data.status !== 404) {
+          response.data = { SPN: partnumber, ...response.data };
           rawData = [...rawData, ...[response.data]];
         } else {
           failedData = [...failedData, partnumber];
@@ -276,6 +287,7 @@ export async function getLiveDistributersData({
         const response = await fetchFutureElectronics(partnumber);
         console.log("herr", response);
         if (response && response[0]) {
+          // response.data = { SPN: partnumber, ...response.data };
           rawData = [...rawData, ...response];
         } else {
           failedData = [...failedData, partnumber];
